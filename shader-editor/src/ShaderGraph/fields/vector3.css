@@ -1,0 +1,14 @@
+
+.node .field .number .label {
+  width: 50%;
+  display: inline-block;
+}
+.node .field .vector3 .inputs {
+  width: 100%;
+  display: flex;
+}
+
+.node .field .vector3 .inputs input {
+  min-width: 30%;
+  flex: 1 1 auto;
+}

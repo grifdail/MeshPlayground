@@ -1,0 +1,35 @@
+.node {
+  background: #dddddd;
+  display: block;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+.node .header {
+  text-align: center;
+  background: #bbbbbb;
+  padding: 0.5rem;
+  font-weight: bold;
+}
+.node .body {
+  position: relative;
+}
+.inputs .pin .display {
+  position: absolute;
+  left: 0;
+  transform: translate(-50%,0);
+}
+.outputs .pin .display {
+  position: absolute;
+  right: 0;
+  transform: translate(50%,0);
+}
+
+.node .field {
+  position: absolute;
+  left: 0;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  box-sizing: border-box;
+  width: 100%;
+
+}

@@ -1,0 +1,9 @@
+
+.node .field .number .label {
+  width: 50%;
+  display: inline-block;
+}
+.node .field .number input {
+  width: 50%;
+  display: inline-block;
+}

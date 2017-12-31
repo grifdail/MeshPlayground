@@ -1,0 +1,23 @@
+.ui.items>.item.item-description {
+  margin-bottom: 3rem;
+}
+.ui.items>.item.item-description>.content {
+  border-left: rgba(34,36,38,.25) solid 1px;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.content>.labelList {
+  position: absolute;
+  top:0;
+  right: 0;
+}
+.documentation>.header > span{
+  margin-right: 2rem;
+}
+span.color-preview {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}

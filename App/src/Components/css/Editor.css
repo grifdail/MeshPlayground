@@ -1,0 +1,43 @@
+.editor {
+  align-items: stretch;
+  display: flex;
+  flex: 1 0 auto;
+  position: relative;
+}
+
+.code-editor {
+  min-width: 500px;
+  width: 50%;
+  flex: 0 0 auto;
+  position: relative;
+}
+.code-editor.minimized {
+  min-width: 0;
+  width: 0;
+}
+
+#CodeEditor {
+  height: 100%;
+  width: 100%;
+}
+.preview {
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+.console {
+  position: absolute;
+  right: 10px;
+  bottom: 20px;
+  width: calc(50% - 40px);
+}
+.icon-minimize {
+  position: absolute;
+  top: 10px;
+  right: -30px;
+  width: 30px;
+  height: 30px;
+  background: white;
+  padding-top: 7px;
+  padding-left: 5px;
+  border-radius: 0 5px 5px 0;
+}

@@ -1,0 +1,2754 @@
+[
+    {
+        "name": "constructor",
+        "type": "function",
+        "description": "create a new Mesh.",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "setColor",
+        "type": "function",
+        "description": "Set the color for the next faces added to the mesh;",
+        "tags": [],
+        "params": [
+            {
+                "name": "color",
+                "type": "color",
+                "description": ""
+            }
+        ],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "getColor",
+        "type": "function",
+        "description": "Return the currentColor of the mesh",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "changeColor",
+        "type": "function",
+        "description": "Set the color of all of the mesh's triangle;",
+        "tags": [],
+        "params": [
+            {
+                "name": "color",
+                "type": "color",
+                "description": ""
+            }
+        ],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "addFace",
+        "type": "function",
+        "description": "Add a new triangle to the mesh\nthe vertice need to be specified in a clockwise orded for the triangle to face the right way",
+        "tags": [],
+        "params": [
+            {
+                "name": "v1",
+                "type": "vector",
+                "description": ""
+            },
+            {
+                "name": "v2",
+                "type": "vector",
+                "description": ""
+            },
+            {
+                "name": "v3",
+                "type": "vector",
+                "description": ""
+            },
+            {
+                "name": "uv1",
+                "type": "vector",
+                "description": "the uv coordinate of the first vertice"
+            },
+            {
+                "name": "uv2",
+                "type": "vector",
+                "description": "the uv coordinate of the second vertice"
+            },
+            {
+                "name": "uv3",
+                "type": "vector",
+                "description": "the uv coordinate of the last vertice"
+            }
+        ],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "addQuad",
+        "type": "function",
+        "description": "Add two triangle to the mesh such that they form a quadrilater\nthe vertice need to be specified in a clockwise orded for the quad to face the right way",
+        "tags": [],
+        "params": [
+            {
+                "name": "v1",
+                "type": "vector",
+                "description": ""
+            },
+            {
+                "name": "v2",
+                "type": "vector",
+                "description": ""
+            },
+            {
+                "name": "v3",
+                "type": "vector",
+                "description": ""
+            },
+            {
+                "name": "v4",
+                "type": "vector",
+                "description": ""
+            },
+            {
+                "name": "uv1",
+                "type": "vector",
+                "description": "the uv coordinate of the first vertice"
+            },
+            {
+                "name": "uv2",
+                "type": "vector",
+                "description": "the uv coordinate of the second vertice"
+            },
+            {
+                "name": "uv3",
+                "type": "vector",
+                "description": "the uv coordinate of the third vertice"
+            },
+            {
+                "name": "uv4",
+                "type": "vector",
+                "description": "the uv coordinate of the last vertice"
+            }
+        ],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "addFaces",
+        "type": "function",
+        "description": "Add another mesh faces to this mesh.\nall transformation are applied;",
+        "tags": [],
+        "params": [
+            {
+                "name": "mesh",
+                "type": "mesh",
+                "description": "Can also be an array of faces"
+            }
+        ],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "clearFaces",
+        "type": "function",
+        "description": "Remove all the triangles of this mesh",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "inverseNormals",
+        "type": "function",
+        "description": "Inverse the direction of all of the triangles",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "mapVertices",
+        "type": "function",
+        "description": "Apply a function to all of the vertex in this mesh",
+        "tags": [],
+        "params": [
+            {
+                "name": "fn",
+                "type": "function",
+                "description": "take a vertex and return a new transformed vertex;"
+            },
+            {
+                "name": "eachOne",
+                "type": "boolean",
+                "description": "if set to false, the function can be call multiple time for the same vertex"
+            }
+        ],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "mapFaces",
+        "type": "function",
+        "description": "Apply a transform function to all of the faces in this mesh;",
+        "tags": [],
+        "params": [
+            {
+                "name": "fn",
+                "type": "function",
+                "description": "take a face object and return a new face object;"
+            }
+        ],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "resetMatrix",
+        "type": "function",
+        "description": "Reset the transform matrix of the mesh (to identity)",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "setMatrix",
+        "type": "function",
+        "description": "Set the transform matrix of this to M",
+        "tags": [],
+        "params": [
+            {
+                "name": "m",
+                "type": "Matrix4",
+                "description": ""
+            }
+        ],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "setPositionRotationScale",
+        "type": "function",
+        "description": "Set the transform matrix of this mesh to the matrix representing position, rotation and scale",
+        "tags": [],
+        "params": [
+            {
+                "name": "position",
+                "type": "Vector3",
+                "description": ""
+            },
+            {
+                "name": "rotation",
+                "type": "Quaternion",
+                "description": ""
+            },
+            {
+                "name": "scale",
+                "type": "Vector3",
+                "description": ""
+            }
+        ],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "translate",
+        "type": "function",
+        "description": "Translate the transform matrix by a vector or by this coordinate",
+        "tags": [],
+        "params": [
+            {
+                "name": "x",
+                "type": "number",
+                "description": ""
+            },
+            {
+                "name": "y",
+                "type": "number",
+                "description": ""
+            },
+            {
+                "name": "z",
+                "type": "number",
+                "description": ""
+            }
+        ],
+        "alternateParams": [
+            {
+                "name": "vector",
+                "type": "Vector3",
+                "description": ""
+            }
+        ],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "rotate",
+        "type": "function",
+        "description": "Rotate the transform matrix by the rotation given by the Euler angles",
+        "tags": [],
+        "params": [
+            {
+                "name": "x",
+                "type": "number",
+                "description": ""
+            },
+            {
+                "name": "y",
+                "type": "number",
+                "description": ""
+            },
+            {
+                "name": "z",
+                "type": "number",
+                "description": ""
+            }
+        ],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "scale",
+        "type": "function",
+        "description": "Scale the transform matrix by a vector or by this coordinate",
+        "tags": [],
+        "params": [
+            {
+                "name": "x",
+                "type": "number",
+                "description": ""
+            },
+            {
+                "name": "y",
+                "type": "number",
+                "description": ""
+            },
+            {
+                "name": "z",
+                "type": "number",
+                "description": ""
+            }
+        ],
+        "alternateParams": [
+            {
+                "name": "vector",
+                "type": "Vector3",
+                "description": ""
+            }
+        ],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "multiplyMatrix",
+        "type": "function",
+        "description": "multiply the transform matrix by another matrix",
+        "tags": [],
+        "params": [
+            {
+                "name": "matrix",
+                "type": "Matrix4",
+                "description": ""
+            }
+        ],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "push",
+        "type": "function",
+        "description": "Save the currentMatrix to the stack. Use pop to bring it back",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "pop",
+        "type": "function",
+        "description": "Set the transform matrix to the lastest saved",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "_generateMesh",
+        "type": "function",
+        "description": "Generate the actual geometry;",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": true
+    },
+    {
+        "name": "constructor",
+        "type": "function",
+        "description": null,
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "createBox",
+        "type": "function",
+        "description": null,
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "createSphere",
+        "type": "function",
+        "description": null,
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "createPrism",
+        "type": "function",
+        "description": null,
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "createParametricMesh",
+        "type": "function",
+        "description": null,
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "subdividedQuad",
+        "type": "function",
+        "description": null,
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "loadImage",
+        "type": "function",
+        "description": null,
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "createCanvas",
+        "type": "function",
+        "description": null,
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "loadSampler",
+        "type": "function",
+        "description": null,
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "setTexture",
+        "type": "function",
+        "description": null,
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "setBackgroundColor",
+        "type": "function",
+        "description": null,
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "TAU",
+        "type": "constant",
+        "description": "2PI",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "Deg2Rad",
+        "type": "constant",
+        "description": "Convertion from degree to radian",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "Rad2Deg",
+        "type": "constant",
+        "description": "Convertion from radian to degree",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "lerp",
+        "type": "function",
+        "description": "Linearly interpolates between a and b by value.",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "inverseLerp",
+        "type": "function",
+        "description": "Calculates the linear parameter t that produces the interpolant value within the range [a, b].",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "map",
+        "type": "function",
+        "description": "Transform value from the range `a to b` to the range `c to d`",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "clamp",
+        "type": "function",
+        "description": "Clamps a value between a minimum float and maximum float value.",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "clamp01",
+        "type": "function",
+        "description": "Clamp a value between 0 and 1",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "pingPong",
+        "type": "function",
+        "description": "PingPongs the value, so that it is never larger than max and never smaller than min.",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "mod",
+        "type": "function",
+        "description": "Return the true modulo of a modulo b (with correct negative number)",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "randomBool",
+        "type": "function",
+        "description": "Return true or false randomly",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "randomInt",
+        "type": "function",
+        "description": null,
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "randomRange",
+        "type": "function",
+        "description": null,
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "randomPointOnSphere",
+        "type": "function",
+        "description": null,
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "remapZeroOne",
+        "type": "function",
+        "description": null,
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "remapMinusOneOne",
+        "type": "function",
+        "description": null,
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "step",
+        "type": "function",
+        "description": "convert a real number in the range [0,1] to one of stepCount possible value",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "tile",
+        "type": "function",
+        "description": "",
+        "tags": [
+            "image"
+        ],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "randomSeed",
+        "type": "function",
+        "description": "Set the seed of the random number generator",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "random",
+        "type": "function",
+        "description": "Returns a pseudo-random number between 0 and 1.",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "abs",
+        "type": "function",
+        "description": "Below are math methodes that are gonna be overwriten",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "acos",
+        "type": "function",
+        "description": "Returns the arccosine of a number.",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "acosh",
+        "type": "function",
+        "description": "Returns the hyperbolic arccosine of a number",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "asin",
+        "type": "function",
+        "description": "Returns the arcsine of a number",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "asinh",
+        "type": "function",
+        "description": "Returns the hyperbolic arcsine of a number",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "atan",
+        "type": "function",
+        "description": "Returns the arctangent of a number.",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "atanh",
+        "type": "function",
+        "description": "Returns the hyperbolic arctangent of a number.",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "atan2",
+        "type": "function",
+        "description": "Returns the arctangent of the quotient of its arguments.",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "ceil",
+        "type": "function",
+        "description": "Returns the smallest integer greater than or equal to a number.",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "cbrt",
+        "type": "function",
+        "description": "Returns the number of leading zeroes of a 32-bit integer.",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "expm1",
+        "type": "function",
+        "description": "Returns subtracting 1 from exp(x).",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "clz32",
+        "type": "function",
+        "description": "Returns the number of leading zeroes of a 32-bit integer.",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "cos",
+        "type": "function",
+        "description": "Returns the cosine of a number.",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "cosh",
+        "type": "function",
+        "description": "Returns the hyperbolic cosine of a number.",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "exp",
+        "type": "function",
+        "description": "Returns E^x, where x is the argument, and E is Euler's constant (2.718…), the base of the natural logarithm",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "floor",
+        "type": "function",
+        "description": "Returns the largest integer less than or equal to a number.",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "fround",
+        "type": "function",
+        "description": "Returns the nearest single precision float representation of a number.",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "hypot",
+        "type": "function",
+        "description": "Returns the square root of the sum of squares of its arguments.",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "log",
+        "type": "function",
+        "description": "Returns the natural logarithm (loge, also ln) of a number.",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "log1p",
+        "type": "function",
+        "description": "Returns the natural logarithm (loge, also ln) of 1 + x for a number x.",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "log2",
+        "type": "function",
+        "description": "Returns the base 2 logarithm of a number.",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "log10",
+        "type": "function",
+        "description": "Returns the base 10 logarithm of a number.",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "max",
+        "type": "function",
+        "description": "Returns the largest of two or more numbers.",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "min",
+        "type": "function",
+        "description": "Returns the smallest of two or more numbers.",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "pow",
+        "type": "function",
+        "description": "Returns base to the exponent power, that is, base^power",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "round",
+        "type": "function",
+        "description": "Returns the value of a number rounded to the nearest integer.",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "sign",
+        "type": "function",
+        "description": "Returns the sign of the x, indicating whether x is positive, negative or zero.",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "sin",
+        "type": "function",
+        "description": "Returns the sine of a number.",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "sinh",
+        "type": "function",
+        "description": "Returns the hyperbolic sine of a number.",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "sqrt",
+        "type": "function",
+        "description": "Returns the positive square root of a number.",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "tan",
+        "type": "function",
+        "description": "Returns the tangent of a number.",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "tanh",
+        "type": "function",
+        "description": "Returns the hyperbolic tangent of a number.",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "trunc",
+        "type": "function",
+        "description": "Returns the integral part of the number x, removing any fractional digits.",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "E",
+        "type": "constant",
+        "description": "Euler's constant and the base of natural logarithms, approximately 2.718.",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "LN10",
+        "type": "constant",
+        "description": "Natural logarithm of 10, approximately 2.303.",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "LN2",
+        "type": "constant",
+        "description": "Natural logarithm of 2, approximately 0.693.",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "LOG10E",
+        "type": "constant",
+        "description": "Base 10 logarithm of E, approximately 0.434.",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "LOG2E",
+        "type": "constant",
+        "description": "Base 2 logarithm of E, approximately 1.443.",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "PI",
+        "type": "constant",
+        "description": "Ratio of the circumference of a circle to its diameter, approximately 3.14159.",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "SQRT1_2",
+        "type": "constant",
+        "description": "Square root of 1/2; equivalently, 1 over the square root of 2, approximately 0.707.",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "SQRT2",
+        "type": "constant",
+        "description": "Square root of 2, approximately 1.414.",
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "randomSeed",
+        "type": "function",
+        "description": null,
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "random",
+        "type": "function",
+        "description": null,
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "Vector3",
+        "type": "class",
+        "superClass": "THREE.Vector3",
+        "description": "Class representing a point.",
+        "tags": [
+            "vector"
+        ],
+        "methodes": [
+            {
+                "name": "negative",
+                "type": "function",
+                "description": "return the negative of a this vector (-x,-y,-z)",
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": {
+                    "name": "a",
+                    "type": "Vector3",
+                    "description": "new Vector3"
+                },
+                "hidden": false
+            },
+            {
+                "name": "add",
+                "type": "function",
+                "description": "Add a Vector3 or add a number to each component",
+                "tags": [],
+                "params": [
+                    {
+                        "name": "v",
+                        "type": "vector",
+                        "description": ""
+                    }
+                ],
+                "alternateParams": [],
+                "returnValue": {
+                    "name": "a",
+                    "type": "Vector3",
+                    "description": "new Vector3"
+                },
+                "hidden": false
+            },
+            {
+                "name": "subtract",
+                "type": "function",
+                "description": "Subtract a Vector3 or subtract a number to each component",
+                "tags": [],
+                "params": [
+                    {
+                        "name": "v",
+                        "type": "Vector3",
+                        "description": ""
+                    }
+                ],
+                "alternateParams": [],
+                "returnValue": {
+                    "name": "a",
+                    "type": "Vector3",
+                    "description": "new Vector3"
+                },
+                "hidden": false
+            },
+            {
+                "name": "multiply",
+                "type": "function",
+                "description": "Multiply two vector component wise.",
+                "tags": [],
+                "params": [
+                    {
+                        "name": "v",
+                        "type": "Vector3",
+                        "description": ""
+                    }
+                ],
+                "alternateParams": [],
+                "returnValue": {
+                    "name": "a",
+                    "type": "Vector3",
+                    "description": "new Vector3"
+                },
+                "hidden": false
+            },
+            {
+                "name": "scale",
+                "type": "function",
+                "description": "Scale a vector by a number",
+                "tags": [],
+                "params": [
+                    {
+                        "name": "a",
+                        "type": "number",
+                        "description": ""
+                    }
+                ],
+                "alternateParams": [],
+                "returnValue": {
+                    "name": "a",
+                    "type": "Vector3",
+                    "description": "new Vector3"
+                },
+                "hidden": false
+            },
+            {
+                "name": "divide",
+                "type": "function",
+                "description": "Divide two Vector3 component wise",
+                "tags": [],
+                "params": [
+                    {
+                        "name": "v",
+                        "type": "Vector3",
+                        "description": ""
+                    }
+                ],
+                "alternateParams": [],
+                "returnValue": {
+                    "name": "a",
+                    "type": "Vector3",
+                    "description": "new Vector3"
+                },
+                "hidden": false
+            },
+            {
+                "name": "equals",
+                "type": "function",
+                "description": "Check if this vector is equal to another",
+                "tags": [],
+                "params": [
+                    {
+                        "name": "v",
+                        "type": "Vector3",
+                        "description": ""
+                    }
+                ],
+                "alternateParams": [],
+                "returnValue": {
+                    "name": "",
+                    "type": "boolean",
+                    "description": ""
+                },
+                "hidden": false
+            },
+            {
+                "name": "dot",
+                "type": "function",
+                "description": "returns the dot product of this vector with another",
+                "tags": [],
+                "params": [
+                    {
+                        "name": "v",
+                        "type": "Vector3",
+                        "description": ""
+                    }
+                ],
+                "alternateParams": [],
+                "returnValue": {
+                    "name": "",
+                    "type": "number",
+                    "description": ""
+                },
+                "hidden": false
+            },
+            {
+                "name": "cross",
+                "type": "function",
+                "description": "Return the cross product of this vector with another",
+                "tags": [],
+                "params": [
+                    {
+                        "name": "v",
+                        "type": "Vector3",
+                        "description": ""
+                    }
+                ],
+                "alternateParams": [],
+                "returnValue": {
+                    "name": "a",
+                    "type": "Vector3",
+                    "description": "new Vector3"
+                },
+                "hidden": false
+            },
+            {
+                "name": "length",
+                "type": "function",
+                "description": "Return the magnitude / lenght of this vector",
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": {
+                    "name": "",
+                    "type": "number",
+                    "description": ""
+                },
+                "hidden": false
+            },
+            {
+                "name": "sqrMagnitude",
+                "type": "function",
+                "description": "Return the squared magnitude of a vector",
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": {
+                    "name": "",
+                    "type": "number",
+                    "description": ""
+                },
+                "hidden": false
+            },
+            {
+                "name": "normalize",
+                "type": "function",
+                "description": "Return this vector such that it's length is equals to one;",
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": {
+                    "name": "this",
+                    "type": "Vector3",
+                    "description": "vector"
+                },
+                "hidden": false
+            },
+            {
+                "name": "unit",
+                "type": "function",
+                "description": "Return a normalized clone of this vector;",
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": {
+                    "name": "a",
+                    "type": "Vector3",
+                    "description": "new vector;"
+                },
+                "hidden": false
+            },
+            {
+                "name": "min",
+                "type": "function",
+                "description": "Return the smallest component of this vector;",
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": {
+                    "name": "",
+                    "type": "number",
+                    "description": ""
+                },
+                "hidden": false
+            },
+            {
+                "name": "max",
+                "type": "function",
+                "description": "Return the biggest component of this vector;",
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": {
+                    "name": "",
+                    "type": "number",
+                    "description": ""
+                },
+                "hidden": false
+            },
+            {
+                "name": "toAngles",
+                "type": "function",
+                "description": "Return the 3d angle formed by this vector",
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": {
+                    "name": "the",
+                    "type": "object",
+                    "description": "angle is the form {theta: number, phi: number}."
+                },
+                "hidden": false
+            },
+            {
+                "name": "angleTo",
+                "type": "function",
+                "description": "Return the angle between this vector and another;",
+                "tags": [],
+                "params": [
+                    {
+                        "name": "a",
+                        "type": "Vector3",
+                        "description": ""
+                    }
+                ],
+                "alternateParams": [],
+                "returnValue": {
+                    "name": "",
+                    "type": "number",
+                    "description": ""
+                },
+                "hidden": false
+            },
+            {
+                "name": "toArray",
+                "type": "function",
+                "description": "Return this vector as an array [x,y,z];",
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": {
+                    "name": "",
+                    "type": "array",
+                    "description": ""
+                },
+                "hidden": false
+            },
+            {
+                "name": "clone",
+                "type": "function",
+                "description": "Return a copy a this vector",
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": {
+                    "name": "",
+                    "type": "Vector3",
+                    "description": ""
+                },
+                "hidden": false
+            },
+            {
+                "name": "set",
+                "type": "function",
+                "description": "Set this vector component based on another vector",
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": {
+                    "name": "",
+                    "type": "Vector3",
+                    "description": ""
+                },
+                "hidden": false
+            },
+            {
+                "name": "toString",
+                "type": "function",
+                "description": "Return this vector as a string `Vector ( x: ... y: ... z : ... )`",
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": {
+                    "name": "",
+                    "type": "string",
+                    "description": ""
+                },
+                "hidden": false
+            },
+            {
+                "name": "multiplyQuaternion",
+                "type": "function",
+                "description": null,
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            }
+        ],
+        "statics": [
+            {
+                "name": "one",
+                "type": "function",
+                "description": "Return new Vector3(1,1,1)",
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "zero",
+                "type": "function",
+                "description": "Return new Vector3(0,0,0)",
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "forward",
+                "type": "function",
+                "description": "Return new Vector3(0,0,1)",
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "back",
+                "type": "function",
+                "description": "Return new Vector3(0,0,-1)",
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "up",
+                "type": "function",
+                "description": "Return new Vector3(0,1,0)",
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "down",
+                "type": "function",
+                "description": "Return new Vector3(0,-1,0)",
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "left",
+                "type": "function",
+                "description": "Return new Vector3(-1,0,0)",
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "right",
+                "type": "function",
+                "description": "Return new Vector3(1,0,0)",
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "dot",
+                "type": "function",
+                "description": null,
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "negative",
+                "type": "function",
+                "description": null,
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "add",
+                "type": "function",
+                "description": null,
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "subtract",
+                "type": "function",
+                "description": null,
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "multiply",
+                "type": "function",
+                "description": null,
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "divide",
+                "type": "function",
+                "description": null,
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "cross",
+                "type": "function",
+                "description": null,
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "unit",
+                "type": "function",
+                "description": null,
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "fromAngles",
+                "type": "function",
+                "description": null,
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "randomDirection",
+                "type": "function",
+                "description": null,
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "min",
+                "type": "function",
+                "description": null,
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "max",
+                "type": "function",
+                "description": null,
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "lerp",
+                "type": "function",
+                "description": null,
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "fromArray",
+                "type": "function",
+                "description": null,
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "angleBetween",
+                "type": "function",
+                "description": null,
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "sqrDistance",
+                "type": "function",
+                "description": null,
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "distance",
+                "type": "function",
+                "description": null,
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "UVLerp",
+                "type": "function",
+                "description": null,
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "projectOnPlane",
+                "type": "function",
+                "description": null,
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            }
+        ],
+        "properties": [],
+        "hidden": false
+    },
+    {
+        "name": "Quaternion",
+        "type": "class",
+        "superClass": "THREE.Quaternion",
+        "description": "Represent a 3D rotation as a Quaternion.",
+        "tags": [
+            "quaternion"
+        ],
+        "methodes": [
+            {
+                "name": "clone",
+                "type": "function",
+                "description": null,
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "multiply",
+                "type": "function",
+                "description": null,
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "multiplyVector",
+                "type": "function",
+                "description": null,
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            }
+        ],
+        "statics": [
+            {
+                "name": "FromTHREEQuaternion",
+                "type": "function",
+                "description": null,
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "Euler",
+                "type": "function",
+                "description": null,
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "AxisRotation",
+                "type": "function",
+                "description": null,
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "LookAt",
+                "type": "function",
+                "description": null,
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "slerp",
+                "type": "function",
+                "description": null,
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            }
+        ],
+        "properties": [],
+        "hidden": false
+    },
+    {
+        "name": "Color",
+        "type": "class",
+        "superClass": null,
+        "description": null,
+        "tags": [],
+        "methodes": [
+            {
+                "name": "constructor",
+                "type": "function",
+                "description": null,
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "r",
+                "type": "function",
+                "description": "",
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": true
+            },
+            {
+                "name": "g",
+                "type": "function",
+                "description": "",
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": true
+            },
+            {
+                "name": "b",
+                "type": "function",
+                "description": "",
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": true
+            },
+            {
+                "name": "h",
+                "type": "function",
+                "description": "",
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": true
+            },
+            {
+                "name": "s",
+                "type": "function",
+                "description": "",
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": true
+            },
+            {
+                "name": "l",
+                "type": "function",
+                "description": "",
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": true
+            },
+            {
+                "name": "r",
+                "type": "function",
+                "description": "",
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": true
+            },
+            {
+                "name": "g",
+                "type": "function",
+                "description": "",
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": true
+            },
+            {
+                "name": "b",
+                "type": "function",
+                "description": "",
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": true
+            },
+            {
+                "name": "h",
+                "type": "function",
+                "description": "",
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": true
+            },
+            {
+                "name": "s",
+                "type": "function",
+                "description": "",
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": true
+            },
+            {
+                "name": "l",
+                "type": "function",
+                "description": "",
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": true
+            },
+            {
+                "name": "updateHSL",
+                "type": "function",
+                "description": "",
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": true
+            },
+            {
+                "name": "updateRGB",
+                "type": "function",
+                "description": "",
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": true
+            },
+            {
+                "name": "toInt",
+                "type": "function",
+                "description": null,
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            }
+        ],
+        "statics": [
+            {
+                "name": "fromHSL",
+                "type": "function",
+                "description": null,
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "lerpRGB",
+                "type": "function",
+                "description": null,
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "lerpHSL",
+                "type": "function",
+                "description": null,
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            }
+        ],
+        "properties": [],
+        "hidden": false
+    },
+    {
+        "name": "Mesh",
+        "type": "class",
+        "superClass": null,
+        "description": "Represente a polygonal mesh.",
+        "tags": [],
+        "methodes": [
+            {
+                "name": "constructor",
+                "type": "function",
+                "description": "create a new Mesh.",
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "setColor",
+                "type": "function",
+                "description": "Set the color for the next faces added to the mesh;",
+                "tags": [],
+                "params": [
+                    {
+                        "name": "color",
+                        "type": "color",
+                        "description": ""
+                    }
+                ],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "getColor",
+                "type": "function",
+                "description": "Return the currentColor of the mesh",
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "changeColor",
+                "type": "function",
+                "description": "Set the color of all of the mesh's triangle;",
+                "tags": [],
+                "params": [
+                    {
+                        "name": "color",
+                        "type": "color",
+                        "description": ""
+                    }
+                ],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "addFace",
+                "type": "function",
+                "description": "Add a new triangle to the mesh\nthe vertice need to be specified in a clockwise orded for the triangle to face the right way",
+                "tags": [],
+                "params": [
+                    {
+                        "name": "v1",
+                        "type": "vector",
+                        "description": ""
+                    },
+                    {
+                        "name": "v2",
+                        "type": "vector",
+                        "description": ""
+                    },
+                    {
+                        "name": "v3",
+                        "type": "vector",
+                        "description": ""
+                    },
+                    {
+                        "name": "uv1",
+                        "type": "vector",
+                        "description": "the uv coordinate of the first vertice"
+                    },
+                    {
+                        "name": "uv2",
+                        "type": "vector",
+                        "description": "the uv coordinate of the second vertice"
+                    },
+                    {
+                        "name": "uv3",
+                        "type": "vector",
+                        "description": "the uv coordinate of the last vertice"
+                    }
+                ],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "addQuad",
+                "type": "function",
+                "description": "Add two triangle to the mesh such that they form a quadrilater\nthe vertice need to be specified in a clockwise orded for the quad to face the right way",
+                "tags": [],
+                "params": [
+                    {
+                        "name": "v1",
+                        "type": "vector",
+                        "description": ""
+                    },
+                    {
+                        "name": "v2",
+                        "type": "vector",
+                        "description": ""
+                    },
+                    {
+                        "name": "v3",
+                        "type": "vector",
+                        "description": ""
+                    },
+                    {
+                        "name": "v4",
+                        "type": "vector",
+                        "description": ""
+                    },
+                    {
+                        "name": "uv1",
+                        "type": "vector",
+                        "description": "the uv coordinate of the first vertice"
+                    },
+                    {
+                        "name": "uv2",
+                        "type": "vector",
+                        "description": "the uv coordinate of the second vertice"
+                    },
+                    {
+                        "name": "uv3",
+                        "type": "vector",
+                        "description": "the uv coordinate of the third vertice"
+                    },
+                    {
+                        "name": "uv4",
+                        "type": "vector",
+                        "description": "the uv coordinate of the last vertice"
+                    }
+                ],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "addFaces",
+                "type": "function",
+                "description": "Add another mesh faces to this mesh.\nall transformation are applied;",
+                "tags": [],
+                "params": [
+                    {
+                        "name": "mesh",
+                        "type": "mesh",
+                        "description": "Can also be an array of faces"
+                    }
+                ],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "clearFaces",
+                "type": "function",
+                "description": "Remove all the triangles of this mesh",
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "inverseNormals",
+                "type": "function",
+                "description": "Inverse the direction of all of the triangles",
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "mapVertices",
+                "type": "function",
+                "description": "Apply a function to all of the vertex in this mesh",
+                "tags": [],
+                "params": [
+                    {
+                        "name": "fn",
+                        "type": "function",
+                        "description": "take a vertex and return a new transformed vertex;"
+                    },
+                    {
+                        "name": "eachOne",
+                        "type": "boolean",
+                        "description": "if set to false, the function can be call multiple time for the same vertex"
+                    }
+                ],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "mapFaces",
+                "type": "function",
+                "description": "Apply a transform function to all of the faces in this mesh;",
+                "tags": [],
+                "params": [
+                    {
+                        "name": "fn",
+                        "type": "function",
+                        "description": "take a face object and return a new face object;"
+                    }
+                ],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "resetMatrix",
+                "type": "function",
+                "description": "Reset the transform matrix of the mesh (to identity)",
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "setMatrix",
+                "type": "function",
+                "description": "Set the transform matrix of this to M",
+                "tags": [],
+                "params": [
+                    {
+                        "name": "m",
+                        "type": "Matrix4",
+                        "description": ""
+                    }
+                ],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "setPositionRotationScale",
+                "type": "function",
+                "description": "Set the transform matrix of this mesh to the matrix representing position, rotation and scale",
+                "tags": [],
+                "params": [
+                    {
+                        "name": "position",
+                        "type": "Vector3",
+                        "description": ""
+                    },
+                    {
+                        "name": "rotation",
+                        "type": "Quaternion",
+                        "description": ""
+                    },
+                    {
+                        "name": "scale",
+                        "type": "Vector3",
+                        "description": ""
+                    }
+                ],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "translate",
+                "type": "function",
+                "description": "Translate the transform matrix by a vector or by this coordinate",
+                "tags": [],
+                "params": [
+                    {
+                        "name": "x",
+                        "type": "number",
+                        "description": ""
+                    },
+                    {
+                        "name": "y",
+                        "type": "number",
+                        "description": ""
+                    },
+                    {
+                        "name": "z",
+                        "type": "number",
+                        "description": ""
+                    }
+                ],
+                "alternateParams": [
+                    {
+                        "name": "vector",
+                        "type": "Vector3",
+                        "description": ""
+                    }
+                ],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "rotate",
+                "type": "function",
+                "description": "Rotate the transform matrix by the rotation given by the Euler angles",
+                "tags": [],
+                "params": [
+                    {
+                        "name": "x",
+                        "type": "number",
+                        "description": ""
+                    },
+                    {
+                        "name": "y",
+                        "type": "number",
+                        "description": ""
+                    },
+                    {
+                        "name": "z",
+                        "type": "number",
+                        "description": ""
+                    }
+                ],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "scale",
+                "type": "function",
+                "description": "Scale the transform matrix by a vector or by this coordinate",
+                "tags": [],
+                "params": [
+                    {
+                        "name": "x",
+                        "type": "number",
+                        "description": ""
+                    },
+                    {
+                        "name": "y",
+                        "type": "number",
+                        "description": ""
+                    },
+                    {
+                        "name": "z",
+                        "type": "number",
+                        "description": ""
+                    }
+                ],
+                "alternateParams": [
+                    {
+                        "name": "vector",
+                        "type": "Vector3",
+                        "description": ""
+                    }
+                ],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "multiplyMatrix",
+                "type": "function",
+                "description": "multiply the transform matrix by another matrix",
+                "tags": [],
+                "params": [
+                    {
+                        "name": "matrix",
+                        "type": "Matrix4",
+                        "description": ""
+                    }
+                ],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "push",
+                "type": "function",
+                "description": "Save the currentMatrix to the stack. Use pop to bring it back",
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "pop",
+                "type": "function",
+                "description": "Set the transform matrix to the lastest saved",
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "_generateMesh",
+                "type": "function",
+                "description": "Generate the actual geometry;",
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": true
+            }
+        ],
+        "statics": [],
+        "properties": [],
+        "hidden": false
+    },
+    {
+        "name": "Box",
+        "type": "class",
+        "superClass": "Mesh",
+        "description": "Mesh of Box",
+        "tags": [],
+        "methodes": [
+            {
+                "name": "constructor",
+                "type": "function",
+                "description": "Create a new Box",
+                "tags": [],
+                "params": [
+                    {
+                        "name": "size",
+                        "type": "number",
+                        "description": ""
+                    },
+                    {
+                        "name": "color",
+                        "type": "color",
+                        "description": ""
+                    },
+                    {
+                        "name": "width",
+                        "type": "number",
+                        "description": "scale of the box on the x axis"
+                    },
+                    {
+                        "name": "height",
+                        "type": "number",
+                        "description": "scale of the box on the y axis"
+                    },
+                    {
+                        "name": "depth",
+                        "type": "number",
+                        "description": "scale of the box on the z axis"
+                    }
+                ],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "generateFaces",
+                "type": "function",
+                "description": "Recalculate the face\nUse this if you want to modify the vertices position;",
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            }
+        ],
+        "statics": [],
+        "properties": [
+            {
+                "name": "LTB",
+                "type": "Vector3",
+                "description": "position of the Left Top Back vertex;"
+            },
+            {
+                "name": "RTB",
+                "type": "Vector3",
+                "description": "position of the Right Top Back vertex;"
+            },
+            {
+                "name": "LTF",
+                "type": "Vector3",
+                "description": "position of the Left Top Front vertex;"
+            },
+            {
+                "name": "RTF",
+                "type": "Vector3",
+                "description": "position of the Right Top Front vertex;"
+            },
+            {
+                "name": "LBB",
+                "type": "Vector3",
+                "description": "position of the Left Bottom Back vertex;"
+            },
+            {
+                "name": "RBB",
+                "type": "Vector3",
+                "description": "position of the Right Bottom Back vertex;"
+            },
+            {
+                "name": "LBF",
+                "type": "Vector3",
+                "description": "position of the Left Bottom Front vertex;"
+            },
+            {
+                "name": "RBF",
+                "type": "Vector3",
+                "description": "position of the Right Bottom Front vertex;"
+            }
+        ],
+        "hidden": false
+    },
+    {
+        "name": "ParametricMesh",
+        "type": "class",
+        "superClass": "Mesh",
+        "description": "Represent a plane transformed according to a parametric function",
+        "tags": [],
+        "methodes": [
+            {
+                "name": "constructor",
+                "type": "function",
+                "description": "Create a new ParametricMesh",
+                "tags": [],
+                "params": [
+                    {
+                        "name": "sizeX",
+                        "type": "number",
+                        "description": "number of subdivision on the horizontal axis"
+                    },
+                    {
+                        "name": "sizeY",
+                        "type": "number",
+                        "description": "number of subdivision on the vertical axis"
+                    },
+                    {
+                        "name": "fn",
+                        "type": "function",
+                        "description": "function that take u and v parameters and return a vector3"
+                    },
+                    {
+                        "name": "color",
+                        "type": "color",
+                        "description": "color of the mesh"
+                    }
+                ],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            }
+        ],
+        "statics": [],
+        "properties": [],
+        "hidden": false
+    },
+    {
+        "name": "ParametricSphere",
+        "type": "class",
+        "superClass": "ParametricMesh",
+        "description": null,
+        "tags": [],
+        "methodes": [
+            {
+                "name": "constructor",
+                "type": "function",
+                "description": null,
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            }
+        ],
+        "statics": [],
+        "properties": [],
+        "hidden": false
+    },
+    {
+        "name": "RegularPrism",
+        "type": "class",
+        "superClass": "Mesh",
+        "description": null,
+        "tags": [],
+        "methodes": [
+            {
+                "name": "constructor",
+                "type": "function",
+                "description": null,
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            }
+        ],
+        "statics": [],
+        "properties": [],
+        "hidden": false
+    },
+    {
+        "name": "RotationalTransformedMesh",
+        "type": "class",
+        "superClass": "Mesh",
+        "description": null,
+        "tags": [],
+        "methodes": [
+            {
+                "name": "constructor",
+                "type": "function",
+                "description": null,
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            }
+        ],
+        "statics": [],
+        "properties": [],
+        "hidden": false
+    },
+    {
+        "name": "SymetricalTransformedMesh",
+        "type": "class",
+        "superClass": "Mesh",
+        "description": null,
+        "tags": [],
+        "methodes": [
+            {
+                "name": "constructor",
+                "type": "function",
+                "description": null,
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            }
+        ],
+        "statics": [],
+        "properties": [],
+        "hidden": false
+    },
+    {
+        "name": "print",
+        "type": "function",
+        "description": "print anything to the console",
+        "params": [
+            {
+                "type": "",
+                "name": "anything"
+            }
+        ],
+        "alternateParams": [],
+        "returnValue": [],
+        "tags": [
+            "log",
+            "debug"
+        ]
+    }
+]

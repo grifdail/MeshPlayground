@@ -1,0 +1,13 @@
+body, html, #root {
+  height: 100%;
+  width: 100%;
+}
+
+svg.surface {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+svg.surface * {
+  box-sizing: border-box;
+}

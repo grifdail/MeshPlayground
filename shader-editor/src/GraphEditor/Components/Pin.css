@@ -1,0 +1,34 @@
+.pin {
+  font-family: sans-serif;
+  position: absolute;
+
+  height: 50px;
+}
+
+.pin .display {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border-width: 3px;
+  border-color: black;
+  border-style: solid;
+  background: white;
+  position: absolute;
+  top:25%;
+}
+
+.pin .label {
+  padding-left: 30px;
+  padding-right: 30px;
+  height: 100%;
+  font-size: 1rem;
+  display:flex;align-items:center;
+
+}
+.outputs .label {
+  flex-direction: row-reverse;
+}
+.outputs .pin {
+  right: 0;
+}
