@@ -259,7 +259,7 @@ export class Mesh {
     var i = 0;
     var uvi = 0
     this._faces.forEach(item => {
-      let faceNormal = new THREE.Vector3(0,0,0).crossVectors( new THREE.Vector3().subVectors(item.v2, item.v1),  new THREE.Vector3().subVectors(item.v3, item.v1));
+      let faceNormal = new THREE.Vector3(0,0,0).crossVectors( new THREE.Vector3().subVectors(item.v2, item.v1),  new THREE.Vector3().subVectors(item.v3, item.v1)).normalize();
       positions[i+0] = item.v1.x;
       positions[i+1] = item.v1.y;
       positions[i+2] = item.v1.z;
@@ -351,6 +351,7 @@ export class Mesh {
       colors[ii+1] = vColors.reduce((s,j) => s+j.g/count, 0);
       colors[ii+2] = vColors.reduce((s,j) => s+j.b/count, 0);
       const n = vNormals.reduce((s,j) => s.add(j)).normalize();
+
       normals[ii+0] = n.x;
       normals[ii+1] = n.y;
       normals[ii+2] = n.z;

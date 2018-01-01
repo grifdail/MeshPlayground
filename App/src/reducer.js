@@ -55,6 +55,10 @@ class Reducer {
     return this.setState({currentCode: code}, this.debouncedReloadGeometry);
   }
 
+  updateShader (code) {
+    return this.setState({shader: code});
+  }
+
   updateSketchName(name) {
     return this.setState({sketchName: name, isInDatabase: false});
   }

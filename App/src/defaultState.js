@@ -1,10 +1,16 @@
+import {DefaultVertexShader, DefaultFragmentShader} from './lib/shader-editor';
+
 export function getDefaultState() {
   return {
     sketchName: "newSketch"+Math.floor(Math.random()*100000),
     currentCode: `//Hello world
 var box = new Box(10);
-addFaces(box);
-`,
+addFaces(box);`,
+    shader: {
+      vertex: DefaultVertexShader,
+      fragment:DefaultFragmentShader,
+
+    },
     geometry: null,
     console: [],
     savedSketches: [],

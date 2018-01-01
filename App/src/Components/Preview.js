@@ -9,7 +9,9 @@ class Preview extends Component {
     this.animate = this.animate.bind(this);
     this.state = {}
   }
-
+  uniforms = {
+    time: {value: Date.now()/1000}
+  }
   componentDidMount() {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera( 45.0, window.innerWidth / window.innerHeight, 0.1, 2000.0 );
@@ -47,6 +49,7 @@ class Preview extends Component {
 
     window.addEventListener( 'resize', this.resize, false );
   }
+
   componentWillUnmount() {
     window.removeEventListener('resize', this.resize)
     window.cancelAnimationFrame(this.animate);
@@ -80,12 +83,22 @@ class Preview extends Component {
 			texture.format = isJPEG ? THREE.RGBFormat : THREE.RGBAFormat;
       texture.needsUpdate = true;
     }
-    mesh.material =  new THREE.MeshPhongMaterial( {color: 0xffffff, shininess: 0.1, vertexColors: THREE.VertexColors,  map: texture } );
+    var material = new THREE.ShaderMaterial( {
+    	uniforms: {
+        time: {value: 1.6}
+      },
+
+    	vertexShader: this.props.shader.vertex,
+    	fragmentShader: this.props.shader.fragment
+
+    } );
+    mesh.material = material; //=  new THREE.MeshPhongMaterial( {color: 0xffffff, shininess: 0.1, vertexColors: THREE.VertexColors,  map: texture } );
   }
 
   animate( time ) {
     requestAnimationFrame( this.animate );
     let {camera, controls, renderer, scene, light} = this.state;
+     this.uniforms.time.value = Date.now()/1000;
     controls.update();
     let cameraPos = camera.position;
     light.position.set(cameraPos.x, cameraPos.y, cameraPos.z);
@@ -97,11 +110,9 @@ class Preview extends Component {
     if(!div) {
       return;
     }
-    console.log("fus")
     var containerStyle = getComputedStyle(div,null);
     let height = parseInt(containerStyle.getPropertyValue('height'),10)-5;
     let width = parseInt(containerStyle.getPropertyValue('width'),10);
-    console.log(width);
     let {camera, renderer} = this.state;
     camera.aspect = width / height;
     camera.updateProjectionMatrix();

@@ -23,7 +23,9 @@
     "semantic-ui-react": "^0.75.1",
     "stacktracey": "^1.2.87",
     "three": "^0.87.0",
-    "three-orbitcontrols": "^1.2.1"
+    "three-orbitcontrols": "^1.2.1",
+    "dependency-solver": "^1.0.6",
+    "react-contextmenu": "^2.9.2"
   },
   "scripts": {
     "start": "react-scripts start",
