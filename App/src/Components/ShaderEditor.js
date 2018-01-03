@@ -20,9 +20,8 @@ class Editor extends Component {
     this.setState({editor: newState});
   }
   render() {
-    const className = `code-editor ${this.props.minized ? "minimized" : ""}`
     return (
-      <div className={className}>
+      <div className="code-editor">
         <ShaderEditor
           graph={this.state.graph}
           editor={this.state.editor}
@@ -30,9 +29,6 @@ class Editor extends Component {
           onEditorChange={this.onEditorChange}
           onShaderChange={this.props.onShaderChange}
         />
-        <div className="icon-minimize" onClick={this.props.onToogle}>
-          <Icon name="toggle left" />
-        </div>
       </div>
     );
   }

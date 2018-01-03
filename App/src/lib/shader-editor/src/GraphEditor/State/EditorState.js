@@ -1,5 +1,5 @@
-import { append, assoc, empty, forEach } from "ramda";
-import { updateProp } from "../utils.js";
+import { append, assoc, empty, forEach, add, mergeWith, merge } from "ramda";
+import { updateProp, updatePath } from "../utils.js";
 
 
 
@@ -8,7 +8,12 @@ const createInitialData = () => {
     dragInitialPos: {x:0, y:0},
     draggedItems: [],
     mousePosition: {x:0, y:0},
-    startingPin: null
+    startingPin: null,
+    viewport: {
+      x: 0,
+      y: 0,
+      zoom: 1
+    }
   }
 }
 
@@ -37,14 +42,20 @@ export class EditorState {
     return new EditorState(assoc("startingPin", null, this.data));
   }
 
-  updateMousePosition(pos) {
-    return new EditorState(assoc("mousePosition", pos, this.data));
+  updateMousePosition(e) {
+    return new EditorState(merge(this.data,{
+      mousePosition: e.world,
+      mousePositionCanvas: e.canvas
+    }));
   }
+
   zoom(delta) {
-
+    return new EditorState(updatePath(["viewport", "zoom"], oldZoom => Math.min(1, Math.max(0.1, oldZoom+Math.sign(delta)*0.1)), this.data))
   }
-  pan(delta) {
-
+  updatePan(newPosition) {
+    const op = this.data.mousePositionCanvas;
+    const delta = {x: newPosition.x - op.x, y: newPosition.y - op.y};
+    return new EditorState(updateProp("viewport", mergeWith(add, delta), this.data))
   }
 }
 

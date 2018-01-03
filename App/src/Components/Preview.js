@@ -2,6 +2,9 @@ import * as THREE from "three";
 import React, { Component } from 'react';
 import OrbitControls from 'three-orbitcontrols'
 
+
+const startTime = Date.now();
+
 class Preview extends Component {
   constructor(props) {
     super(props);
@@ -9,9 +12,7 @@ class Preview extends Component {
     this.animate = this.animate.bind(this);
     this.state = {}
   }
-  uniforms = {
-    time: {value: Date.now()/1000}
-  }
+
   componentDidMount() {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera( 45.0, window.innerWidth / window.innerHeight, 0.1, 2000.0 );
@@ -83,11 +84,12 @@ class Preview extends Component {
 			texture.format = isJPEG ? THREE.RGBFormat : THREE.RGBAFormat;
       texture.needsUpdate = true;
     }
+    this.uniforms = {
+      time: {value: Date.now()/1000}
+    };
     var material = new THREE.ShaderMaterial( {
-    	uniforms: {
-        time: {value: 1.6}
-      },
-
+    	uniforms: this.uniforms,
+      vertexColors: true,
     	vertexShader: this.props.shader.vertex,
     	fragmentShader: this.props.shader.fragment
 
@@ -98,7 +100,7 @@ class Preview extends Component {
   animate( time ) {
     requestAnimationFrame( this.animate );
     let {camera, controls, renderer, scene, light} = this.state;
-     this.uniforms.time.value = Date.now()/1000;
+     this.uniforms.time.value = (Date.now()-startTime)/1000;
     controls.update();
     let cameraPos = camera.position;
     light.position.set(cameraPos.x, cameraPos.y, cameraPos.z);

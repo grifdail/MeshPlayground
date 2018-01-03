@@ -12,8 +12,8 @@ const node = {
   params: [
 
   ],
-  toGLSL: (inputs, params, outputs) => {
-    return `float ${outputs.value} = ${inputs.A} % ${inputs.B};`;
+  toGLSL(inputs, params, outputs) {
+    return `float ${outputs.value} = mod(${inputs.A}, ${inputs.B});`;
   }
 }
 

@@ -1,4 +1,4 @@
-import {formatFloat} from "../utils.js";
+import {formatFloat} from "../../utils.js";
 
 const node = {
   name: "Vector3",

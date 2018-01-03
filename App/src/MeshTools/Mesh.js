@@ -362,7 +362,7 @@ export class Mesh {
 
 
     this._faces.forEach(item => {
-      let faceNormal = new THREE.Vector3(0,0,0).crossVectors( new THREE.Vector3().subVectors(item.v2, item.v1),  new THREE.Vector3().subVectors(item.v3, item.v1));
+      let faceNormal = new THREE.Vector3(0,0,0).crossVectors( new THREE.Vector3().subVectors(item.v2, item.v1),  new THREE.Vector3().subVectors(item.v3, item.v1)).normalize();
       indexes.push(
         addVertex(item.v1, faceNormal, item.color, item.uv1),
         addVertex(item.v2, faceNormal, item.color, item.uv2),

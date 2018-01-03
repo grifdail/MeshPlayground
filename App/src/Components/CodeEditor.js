@@ -9,9 +9,8 @@ import 'brace/theme/github'
 import 'brace/ext/language_tools';
 
 function CodeEditor(props) {
-  const className = `code-editor ${props.minized ? "minimized" : ""}`
   return (
-    <div className={className}>
+    <div className="code-editor">
       <AceEditor
         mode="javascript"
         theme="github"
@@ -23,9 +22,6 @@ function CodeEditor(props) {
         fontSize={props.fontSize || 12}
         editorProps={{$blockScrolling: true}}
       />
-      <div className="icon-minimize" onClick={props.onToogle}>
-        <Icon name="toggle left" />
-      </div>
     </div>
 
   );

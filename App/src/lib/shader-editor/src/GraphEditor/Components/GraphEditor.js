@@ -5,16 +5,6 @@ import {EditorState} from '../State/EditorState.js';
 import {map, reduce} from "ramda";
 
 export class GraphEditor extends Component {
-  state = {
-    edges: [],
-    nodes: [],
-    dragAndDrop: {
-      currentlySelectedNodes: [],
-      originalPosition: {}
-    },
-    startConnection: null,
-    mousePosition: {}
-  }
 
   graphChanges = [];
   editorChanges = [];
@@ -24,7 +14,7 @@ export class GraphEditor extends Component {
   _events = {
     onStartDragNode: (nodeName, originalPosition) => {
       this.editorChanges.push(EditorState.addDraggedNode(nodeName))
-      this.editorChanges.push(EditorState.updateDrag(originalPosition.canvas))
+      this.editorChanges.push(EditorState.updateDrag(originalPosition.world))
     },
     onEndDragNode: () => {
         this.editorChanges.push(EditorState.endDrag());
@@ -36,12 +26,21 @@ export class GraphEditor extends Component {
       this.graphChanges.push(GraphState.updateNodePosition(delta, selectedNode));
       this.editorChanges.push(EditorState.updateDrag(newPosition));
     },
+    onUpdatePan: (newPosition) => {
+
+      this.editorChanges.push(EditorState.updatePan(newPosition));
+    },
 
     onMouseMove: (e) => {
       if (this.props.editor.data.draggedItems.length>=1) {
-        this._events.onUpdateDrag(e.canvas);
+        this._events.onUpdateDrag(e.world);
+      } else if(e.event.buttons & 4) {
+        this.editorChanges.push(EditorState.updatePan(e.canvas));
       }
-      this.editorChanges.push(EditorState.updateMousePosition(e.canvas));
+      this.editorChanges.push(EditorState.updateMousePosition(e));
+    },
+    onScroll: (e) => {
+      this.editorChanges.push(EditorState.zoom(e.deltaY));
     },
 
     onAddNode: (pos, type) => {
@@ -112,8 +111,8 @@ export class GraphEditor extends Component {
   render() {
     const {fields, models, graph, editor} = this.props;
     const {nodes, edges} = graph.data;
-    const {startingPin} = editor.data;
+    const {startingPin, viewport} = editor.data;
     const displayEdges = startingPin ? [...edges,this.getMouseEdge()] : edges;
-    return <GraphDisplay models={models} nodes={nodes} edges={displayEdges} events={this.events} fields={fields}/>
+    return <GraphDisplay models={models} nodes={nodes} edges={displayEdges} events={this.events} fields={fields} viewport={viewport}/>
   }
 }

@@ -5,6 +5,7 @@ import {Edge} from "./Edge.js";
 import {AddContextMenu} from "./AddContextMenu.js";
 import {HEADER_HEIGHT, PIN_HEIGHT, NODE_WIDTH} from "../StyleConstant.js";
 import { ContextMenuTrigger } from "react-contextmenu";
+import { Group } from "./Group.js";
 
 function GetPinPosition(pin, nodes, models) {
   if(!pin.node) {
@@ -33,6 +34,10 @@ export class GraphDisplay extends Component {
         x: e.clientX - rect.x,
         y: e.clientY - rect.y
       },
+      world: {
+        x: e.clientX - rect.x - this.props.viewport.x,
+        y: e.clientY - rect.y - this.props.viewport.y
+      },
       event: e
     })
   };
@@ -60,15 +65,17 @@ export class GraphDisplay extends Component {
   };
 
   render() {
-    const {nodes, models, edges, events, fields} = this.props;
-
+    const {nodes, models, edges, events, fields, viewport} = this.props;
+    const rect = this.refs.root ? this.refs.root.getBoundingClientRect() : {width: window.innerWidth*0.5, height: window.innerHeight}
     return (
       <div>
-      <ContextMenuTrigger  id="add-context-menu">
-        <svg className="surface" ref="root" onMouseMove={this.onMouseMove} onMouseUp={this.onClick}>
-          {edges.map((node, i)=><Edge key={"edge"+i} name={node.name}   from={GetPinPosition(node.from, nodes, models)} to={GetPinPosition(node.to, nodes, models)} color={node.color} events={events}/>)}
-          {nodes.map((node, i)=><Node key={"node"+i} node={node} model={models[node.type]} events={events} mouseHelper={this.mouseHelper} fields={fields}/>)}
-        </svg>
+      <ContextMenuTrigger  id="add-context-menu" holdToDisplay={-1}>
+        <svg className="surface" ref="root" onMouseMove={this.onMouseMove} onMouseUp={this.onClick} onWheel={events.onScroll} >
+          <Group x={viewport.x} y={viewport.y} scaleX={viewport.zoom} scaleY={viewport.zoom}>
+            {edges.map((node, i)=><Edge key={"edge"+i} name={node.name}   from={GetPinPosition(node.from, nodes, models)} to={GetPinPosition(node.to, nodes, models)} color={node.color} events={events}/>)}
+            {nodes.map((node, i)=><Node key={"node"+i} node={node} model={models[node.type]} events={events} mouseHelper={this.mouseHelper} fields={fields}/>)}
+          </Group>
+          </svg>
       </ContextMenuTrigger>
 
       <AddContextMenu id="add-context-menu" models={models} createAddNode={this.createAddNode} />

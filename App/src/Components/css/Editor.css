@@ -6,8 +6,8 @@
 }
 
 .code-editor {
-  min-width: 500px;
-  width: 50%;
+  min-width: 100;
+  width: 100%;
   flex: 0 0 auto;
   position: relative;
 }
@@ -30,10 +30,29 @@
   bottom: 20px;
   width: calc(50% - 40px);
 }
-.icon-minimize {
+.tab-menu.minimized {
+  width: 0;
+  min-width: 0;
+}
+.tab-menu {
+  align-items: stretch;
+  display: flex;
+  flex: 1 0 auto;
+  position: relative;
+  min-width: 500px;
+    width: 50%;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    position: relative;
+}
+.tab-menu .icons {
   position: absolute;
   top: 10px;
   right: -30px;
+}
+.tab-menu .icons .icon-minimize {
+  display: block;
+  margin-bottom: 1rem;
   width: 30px;
   height: 30px;
   background: white;

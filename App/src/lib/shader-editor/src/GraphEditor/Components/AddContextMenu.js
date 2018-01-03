@@ -8,8 +8,8 @@ export function AddContextMenu({id, models, createAddNode}) {
   return (
     <RContextMenu id={id}>
       {values(mapObjIndexed((category, name) => (
-        <SubMenu title={name}>
-          {map(model => <MenuItem onClick={createAddNode(model.name)}>{model.name}</MenuItem>, category)}
+        <SubMenu title={name} key={name}>
+          {map(model => <MenuItem key={model.name} onClick={createAddNode(model.name)}>{model.name}</MenuItem>, category)}
         </SubMenu>),categories))}
     </RContextMenu>
   )
