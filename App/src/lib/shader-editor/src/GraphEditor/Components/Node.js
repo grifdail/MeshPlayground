@@ -16,7 +16,7 @@ var mouseDown = (events, name, input, output) => e => {
 }
 
 
-export function Node({node, model, events, mouseHelper, fields}) {
+export function Node({node, model, events, mouseHelper, fields, colorByType}) {
   const dragOn = e => {
     e.preventDefault();
     e.stopPropagation();
@@ -36,7 +36,8 @@ export function Node({node, model, events, mouseHelper, fields}) {
   const updateNodeParams = type => e => {
     events.updateNodeParams(node.name, type, e)
   }
-  var pinCount = Math.max(model.inputs.length, model.outputs.length);
+  const outputs = model.getOutputType(node.inputsTypes, node.params);
+  var pinCount = Math.max(model.inputs.length, outputs.length);
   var totalContentCount = pinCount+model.params.length
   var totalContentHeight = totalContentCount * PIN_HEIGHT;
   var totalHeight = totalContentHeight + HEADER_HEIGHT;
@@ -47,15 +48,22 @@ export function Node({node, model, events, mouseHelper, fields}) {
         <rect className="header" width={NODE_WIDTH} height={HEADER_HEIGHT}/>
         <text textAnchor="middle" x={NODE_WIDTH*0.5} y ={HEADER_HEIGHT*0.5} alignmentBaseline="middle">{model.name}</text>
       </Group>
-      <Group className="body" className="node" y={HEADER_HEIGHT}>
+      <Group className="body" y={HEADER_HEIGHT}>
         <Group className="pingroup inputs">
           {
-            model.inputs.map((input,i) => <Pin  key={i}  type={input.type} kind="input" index={i} onClick={mouseDown(events, node.name, input.name, null) }>{input.name} </Pin>)
+            model.inputs.map((input,i) => <Pin
+              key={i}
+              type={node.inputsTypes[input.name]}
+              kind="input"
+              index={i}
+              onClick={mouseDown(events, node.name, input.name, null) }
+              colorByType={colorByType}
+            >{input.name} </Pin>)
           }
         </Group>
         <Group className="pingroup outputs">
           {
-            model.outputs.map((output,i) => <Pin key={i} type={output.type} kind="output" index={i} onClick={mouseDown(events, node.name, null, output.name)}>{output.name}</Pin>)
+            outputs.map((output,i) => <Pin key={i}   colorByType={colorByType} type={output.type} kind="output" index={i} onClick={mouseDown(events, node.name, null, output.name)}>{output.name}</Pin>)
           }
         </Group>
         <Group x={0} y={pinCount*PIN_HEIGHT}>
@@ -74,36 +82,3 @@ export function Node({node, model, events, mouseHelper, fields}) {
 
   )
 }
-
-/*
-
-<foreignObject x={node.position.x} y={node.position.y} height={totalHeight * PIN_HEIGHT + HEADER_HEIGHT} width={NODE_WIDTH} >
-<div className="node" height={totalHeight * PIN_HEIGHT + HEADER_HEIGHT}>
-  <div className="header" style={{height: HEADER_HEIGHT, width:NODE_WIDTH}} onMouseDownCapture={dragOn} onMouseUpCapture={onRelease}>
-    {model.name}
-  </div>
-  <div className="body" style={{height:totalHeight*PIN_HEIGHT}}>
-    <div className="inputs">
-      {
-        model.inputs.map((input,i) => <Pin type={input.type} index={i} onClick={mouseDown(events, node.name, input.name, null) }>{input.name} </Pin>)
-      }
-    </div>
-    <div className="outputs">
-      {
-        model.outputs.map((output,i) => <Pin type={output.type} index={i} onClick={mouseDown(events, node.name, null, output.name)}>{output.name}</Pin>)
-      }
-    </div>
-    <div className="params">
-      {
-        model.params.map(({name, type},i) => {
-          var Component = fields[type];
-          return <div className="field" style={{transform: `translate(0, ${(pinCount+i)*PIN_HEIGHT}px)`}}><Component id={i} onChange={updateNodeParams(name)} value={node.params[name]} name={name} /></div>
-        })
-      }
-    </div>
-  </div>
-
-</div>
-</foreignObject>
-
-*/

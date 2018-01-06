@@ -1,4 +1,7 @@
-import {mergeWith, add, compose, append, reject, pathEq, curry, reduce, forEach, assocPath} from "ramda";
+import {mergeWith, add, compose, append, reject,
+  pathEq, curry, reduce, forEach, assocPath,
+  equals, differenceWith, pipe,
+  both, path, find, any, propEq} from "ramda";
 import {updateWhere, updateProp, randomNodeName, hasPropInList } from "../utils.js";
 
 const updateNodes = updateProp('nodes');
@@ -25,26 +28,32 @@ export class GraphState {
     );
   }
 
-  updateNodeParams(nodeName, paramsName, value, state) {
+  updateNodeParams(nodeName, paramsName, value, models) {
     return new GraphState(
       updateNodes(updateNamed(nodeName, assocPath(["params", paramsName], value)), this.data)
     )
   }
 
-  createEdge(newNode, oldNode) {
+  createEdge(newNode, oldNode, models, colorByType) {
     if ((newNode.input && oldNode.input) || (newNode.output && oldNode.output)) {
       return this;
     }
     var leftNode = oldNode.input ? newNode : oldNode;
     var rightNode = oldNode.input ? oldNode : newNode;
-    var newEdge = {from: leftNode, to:rightNode, color:"red", name:randomNodeName(25)}
+    const leftNodeObj = find(whereName(leftNode.node), this.data.nodes);
+
+    const types = models[leftNodeObj.type].getOutputType(leftNodeObj.inputsTypes, leftNodeObj.params);
+    const newType = find(whereName(leftNode.output),types);
+    var newEdge = {from: leftNode, to:rightNode, color:colorByType[newType.type] || 'red', name:randomNodeName(25)}
     return  new GraphState(
       updateEdges(compose(
         append(newEdge),
         reject(pathEq(["to"], rightNode))
       ), this.data)
-    );
+    ).updateNodesTypes(assocPath(["inputsTypes", rightNode.input], newType.type), rightNode.node, models);
   }
+
+
 
   createNode(position, model) {
     return this.createNodeNamed(randomNodeName(), position, model)
@@ -55,17 +64,45 @@ export class GraphState {
       old[n.name] = n.default;
       return old;
     }, {}, model.params);
+    const inputsTypes = reduce((old,n) => {
+      old[n.name] = n.type.split('|')[0];
+      return old;
+    }, {}, model.inputs);
     var nodeObj = {
       name: name,
       type: model.name,
+      model,
       position,
-      params
+      params,
+      inputsTypes,
     }
     return new GraphState(updateProp('nodes', append(nodeObj), this.data));
   }
 
   removeEdge(name) {
+
     return new GraphState(updateEdges(reject(whereName(name)), this.data));
+  }
+
+
+  updateNodesTypes(updateNode, nodeName, models) {
+    var nodeToDestroy = null;
+
+    return new GraphState(pipe(
+        updateNodes(updateWhere(whereName(nodeName), node => {
+
+          const model = models[node.type];
+          const oldOutput = model.getOutputType(node.inputsTypes, node.params);
+
+          const newNode = updateNode(node);
+          const newOutput = model.getOutputType(newNode.inputsTypes, newNode.params);
+          nodeToDestroy = differenceWith(equals, newOutput, oldOutput);
+
+          return newNode;
+
+        })),
+        updateEdges(reject(both(pathEq(["from", "node"], nodeName), pipe(path(["from", "output"]), a => any(propEq("name", a), nodeToDestroy)))))
+    )(this.data));
   }
 
   removeNode(name) {
@@ -74,6 +111,7 @@ export class GraphState {
       updateEdges(reject(v => (pathEq(["from", "node"], name, v) || pathEq(["to", "node"], name, v))))
     )(this.data));
   }
+
 }
 
 

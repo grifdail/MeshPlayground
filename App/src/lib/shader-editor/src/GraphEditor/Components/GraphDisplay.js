@@ -16,7 +16,7 @@ function GetPinPosition(pin, nodes, models) {
     throw new Error(`Node ${pin.node} cannot be found.`)
   }
   const model = models[node.type];
-  const pins = pin.input ? model.inputs : model.outputs;
+  const pins = pin.input ? model.inputs : model.getOutputType(node.inputsTypes, node.params);
   const pos = pins.findIndex(_value => (_value.name === pin.input || _value.name === pin.output));
   return {
     x: node.position.x + (pin.input ? 0 : NODE_WIDTH) ,
@@ -65,15 +65,36 @@ export class GraphDisplay extends Component {
   };
 
   render() {
-    const {nodes, models, edges, events, fields, viewport} = this.props;
-    const rect = this.refs.root ? this.refs.root.getBoundingClientRect() : {width: window.innerWidth*0.5, height: window.innerHeight}
+    const {nodes, models, edges, events, fields, viewport, colorByType} = this.props;
     return (
       <div>
       <ContextMenuTrigger  id="add-context-menu" holdToDisplay={-1}>
         <svg className="surface" ref="root" onMouseMove={this.onMouseMove} onMouseUp={this.onClick} onWheel={events.onScroll} >
           <Group x={viewport.x} y={viewport.y} scaleX={viewport.zoom} scaleY={viewport.zoom}>
-            {edges.map((node, i)=><Edge key={"edge"+i} name={node.name}   from={GetPinPosition(node.from, nodes, models)} to={GetPinPosition(node.to, nodes, models)} color={node.color} events={events}/>)}
-            {nodes.map((node, i)=><Node key={"node"+i} node={node} model={models[node.type]} events={events} mouseHelper={this.mouseHelper} fields={fields}/>)}
+            {
+              edges.map((node, i)=>
+                <Edge
+                  key={"edge"+i}
+                  name={node.name}
+                  from={GetPinPosition(node.from, nodes, models)}
+                  to={GetPinPosition(node.to, nodes, models)}
+                  color={node.color} events={events}
+                />
+              )
+            }
+            {
+              nodes.map((node, i)=>
+                <Node
+                  key={"node"+i}
+                  node={node}
+                  model={models[node.type]}
+                  events={events}
+                  mouseHelper={this.mouseHelper}
+                  fields={fields}
+                  colorByType={colorByType}
+                />
+              )
+            }
           </Group>
           </svg>
       </ContextMenuTrigger>

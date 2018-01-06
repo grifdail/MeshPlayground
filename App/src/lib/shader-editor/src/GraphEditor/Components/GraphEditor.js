@@ -69,7 +69,7 @@ export class GraphEditor extends Component {
         return null;
       }
       var newNode = {node, input, output};
-      this.graphChanges.push(GraphState.createEdge(startingPin, newNode));
+      this.graphChanges.push(GraphState.createEdge(startingPin, newNode, this.props.models, this.props.colorByType));
       this.editorChanges.push(EditorState.endConnection());
     },
 
@@ -81,7 +81,7 @@ export class GraphEditor extends Component {
     },
 
     updateNodeParams: (nodeName, paramsName, value, state) => {
-      this.graphChanges.push(GraphState.updateNodeParams(nodeName, paramsName, value));
+      this.graphChanges.push(GraphState.updateNodeParams(nodeName, paramsName, value, this.props.models));
     }
   }
 
@@ -109,10 +109,10 @@ export class GraphEditor extends Component {
   }
 
   render() {
-    const {fields, models, graph, editor} = this.props;
+    const {fields, models, graph, editor, colorByType} = this.props;
     const {nodes, edges} = graph.data;
     const {startingPin, viewport} = editor.data;
     const displayEdges = startingPin ? [...edges,this.getMouseEdge()] : edges;
-    return <GraphDisplay models={models} nodes={nodes} edges={displayEdges} events={this.events} fields={fields} viewport={viewport}/>
+    return <GraphDisplay models={models} nodes={nodes} colorByType={colorByType} edges={displayEdges} events={this.events} fields={fields} viewport={viewport}/>
   }
 }

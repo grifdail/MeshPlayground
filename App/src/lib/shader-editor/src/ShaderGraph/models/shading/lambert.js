@@ -1,6 +1,6 @@
 export const Lambert = {
-  name: "Clamp",
-  category: "math",
+  name: "Lambert",
+  category: "shading",
   inputs: [
     {name:"min", type:"float"},
     {name:"max", type:"float"},

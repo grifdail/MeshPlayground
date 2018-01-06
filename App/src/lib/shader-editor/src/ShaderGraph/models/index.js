@@ -39,6 +39,8 @@ const list = [
   require('./vector3/length.js').default,
   require('./vector3/lerp.js').default,
 
+  require('./shading/lambert.js').default,
+
 
   require('./hidden/output.js').default,
 ]
@@ -51,7 +53,7 @@ const defaultNode = {
   inputs: [],
   outputs: [],
   params: [],
-  getOutputType() {return this.outputs}
+  getOutputType() {return this.outputs},
   toGLSL: () => "",
   requireUniform: () => ""
 }

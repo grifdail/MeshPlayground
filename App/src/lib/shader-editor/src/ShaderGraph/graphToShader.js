@@ -8,7 +8,7 @@ function removeLonelyNode(simplifiedGraph, source) {
   let requiredNodes = [source];
   let nextNodes = [source];
   let currentNode
-  while(currentNode = nextNodes.pop()) {
+  while((currentNode = nextNodes.pop())) {  // eslint-disable-line
     const dependencies = simplifiedGraph[currentNode] || [];
     dependencies.forEach(name => {
       if(requiredNodes.indexOf(name) < 0) {
@@ -48,7 +48,7 @@ const getCodeForNode = curry((models, node) => {
     return old;
   }, {});
   return {
-    main:  model.toGLSL(inputs, params, outputs),
+    main:  model.toGLSL(inputs, params, outputs, node.inputsTypes),
     uniforms:  model.requireUniform(inputs, params, outputs)
   };
 })

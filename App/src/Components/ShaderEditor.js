@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {ShaderEditor, GraphState, EditorState} from '../lib/shader-editor';
-import { Icon } from 'semantic-ui-react';
 
 
 

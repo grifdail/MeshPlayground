@@ -16,5 +16,5 @@ export function Edge({name, from, to, color, events}) {
     }
   }
 
-  return (<path d={string} stroke={color} stroke-width="10" fill="none" onClick={onClick}/>);
+  return (<path d={string} stroke={color} strokeWidth="10" fill="none" onClick={onClick}/>);
 }

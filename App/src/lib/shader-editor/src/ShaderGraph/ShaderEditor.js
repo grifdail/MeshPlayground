@@ -4,6 +4,7 @@ import {models} from "./models/index.js";
 import {fields} from "./fields/index.js";
 import { GraphEditor } from '../GraphEditor/Components/GraphEditor.js';
 import { calculateShader } from './graphToShader.js';
+import colorByType from './typeColor.js';
 
 
 export class ShaderEditor extends Component {
@@ -31,6 +32,7 @@ export class ShaderEditor extends Component {
       fields={fields}
       onGraphChange={this.onGraphChange}
       onEditorChange={this.props.onEditorChange}
+      colorByType={colorByType}
      />
   }
 
