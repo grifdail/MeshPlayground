@@ -1,6 +1,5 @@
 import React from 'react';
 import AceEditor from 'react-ace';
-import { Icon } from 'semantic-ui-react';
 
 import 'brace/mode/javascript';
 import 'brace/theme/github'
