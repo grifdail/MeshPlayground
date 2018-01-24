@@ -1,16 +1,10 @@
+import{SameTypeOperation} from "../../utils.js";
+
 export const Min = {
+  ...SameTypeOperation,
   name: "Min",
   category: "math",
-  inputs: [
-    {name:"A", type:"float"},
-    {name:"b", type:"float"},
-  ],
-  outputs: [
-    {name:"value", type:"float"}
-  ],
-  toGLSL(inputs, params, outputs) {
-    return `float ${outputs.value} = min(${inputs.A}, ${inputs.B});`;
-  }
+  GLSLOperation: (A, B) => `min(${A}, ${B})`
 }
 
 

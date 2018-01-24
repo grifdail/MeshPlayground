@@ -45,7 +45,7 @@ export function Node({node, model, events, mouseHelper, fields, colorByType}) {
     <Group className="node" x={node.position.x} y={node.position.y}>
       <rect className="root" width={NODE_WIDTH} height={totalHeight}/>
       <Group onMouseDownCapture={dragOn} onMouseUpCapture={onRelease}>
-        <rect className="header" width={NODE_WIDTH} height={HEADER_HEIGHT}/>
+        <rect className="header" width={NODE_WIDTH-2} height={HEADER_HEIGHT-2} x="1" y="1"/>
         <text textAnchor="middle" x={NODE_WIDTH*0.5} y ={HEADER_HEIGHT*0.5} alignmentBaseline="middle">{model.name}</text>
       </Group>
       <Group className="body" y={HEADER_HEIGHT}>

@@ -1,18 +1,10 @@
-
+import {VectorTransformation} from "../../utils.js"
 const node = {
+  ...VectorTransformation,
   name: "Arctangent",
   category: "math",
-  inputs: [
-    { name: "A", type:"number", default: 0}
-  ],
-  outputs: [
-    {name: "value", type: "number"}
-  ],
-  params: [
-
-  ],
-  toGLSL: (inputs, params, outputs) => {
-    return `float ${outputs.value} = atan(${inputs.A});`;
+  GLSLOperation(A) {
+    return `atan(${A})`;
   }
 }
 

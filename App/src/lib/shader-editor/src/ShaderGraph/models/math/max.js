@@ -1,16 +1,10 @@
+import{SameTypeOperation} from "../../utils.js";
+
 export const Max = {
+  ...SameTypeOperation,
   name: "Max",
   category: "math",
-  inputs: [
-    {name:"A", type:"float"},
-    {name:"b", type:"float"},
-  ],
-  outputs: [
-    {name:"value", type:"float"}
-  ],
-  toGLSL(inputs, params, outputs) {
-    return `float ${outputs.value} = max(${inputs.A}, ${inputs.B});`;
-  }
+  GLSLOperation: (A, B) => `max(${A}, ${B})`
 }
 
 export default Max;

@@ -42,6 +42,8 @@ class Editor extends Component {
           />
           <ShaderEditor
             onShaderChange={props.reducer.updateShader}
+            onGraphChange={props.reducer.updateShaderGraph}
+            graphData={props.shaderGraph}
           />
         </Tabs>
 

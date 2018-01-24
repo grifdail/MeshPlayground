@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {none, propEq} from "ramda";
+import {none, propEq, map, prop} from "ramda";
 import {models} from "./models/index.js";
 import {fields} from "./fields/index.js";
 import { GraphEditor } from '../GraphEditor/Components/GraphEditor.js';
@@ -11,18 +11,19 @@ export class ShaderEditor extends Component {
   constructor(props) {
     super(props);
     const nodes = props.graph.data.nodes;
-
-    if (none(propEq("name", "Output"), nodes)) {
+    if (none(propEq("name", "output"), nodes)) {
       props.onGraphChange(props.graph.createNodeNamed("output", {x:100,y:100}, models["Output"]));
     }
   }
-
-  updateShader = () => {
-
-  }
+  oldShader = {};
   onGraphChange = (newGraph) => {
     this.props.onGraphChange(newGraph);
-    this.props.onShaderChange(calculateShader(newGraph.data, models));
+    const newShader = calculateShader(newGraph.data, models);
+    if (newShader.fragment !== this.oldShader.fragment) {
+      this.oldShader = newShader;
+      this.props.onShaderChange(newShader, newGraph);
+    }
+
   }
   render() {
     return <GraphEditor

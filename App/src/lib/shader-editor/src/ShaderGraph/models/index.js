@@ -8,6 +8,8 @@ const list = [
   require('./inputs/normal.js').default,
   require('./inputs/color.js').default,
   require('./inputs/position.js').default,
+  require('./inputs/screenPosition.js').default,
+  require('./inputs/cameraPosition.js').default,
 
   require('./math/addition.js').default,
   require('./math/division.js').default,
@@ -30,16 +32,24 @@ const list = [
 
   require('./vector3/compose.js').default,
   require('./vector3/decompose.js').default,
-  require('./vector3/addition.js').default,
-  require('./vector3/division.js').default,
-  require('./vector3/multiplication.js').default,
-  require('./vector3/subtraction.js').default,
   require('./vector3/cross.js').default,
   require('./vector3/dot.js').default,
   require('./vector3/length.js').default,
   require('./vector3/lerp.js').default,
+  require('./vector3/normalize.js').default,
 
   require('./shading/lambert.js').default,
+
+
+  require('./logic/if.js').default,
+  require('./logic/or.js').default,
+  require('./logic/and.js').default,
+  require('./logic/not.js').default,
+  require('./logic/equals.js').default,
+  require('./logic/greaterThan.js').default,
+  require('./logic/greaterThanOrEquals.js').default,
+  require('./logic/lowerThan.js').default,
+  require('./logic/lowerThanOrEquals.js').default,
 
 
   require('./hidden/output.js').default,

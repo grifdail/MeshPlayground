@@ -1,8 +1,8 @@
 
-import{VectorFloatOperationOutputType} from "../../utils.js";
+import{VectorFloatOperation} from "../../utils.js";
 
 const node = {
-  ...VectorFloatOperationOutputType,
+  ...VectorFloatOperation,
   name: "Multiplication",
   category: "math",
   GLSLOperation: (A, B) => `${A} * ${B}`

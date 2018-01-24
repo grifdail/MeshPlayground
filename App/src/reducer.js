@@ -1,9 +1,9 @@
 import {debounce} from "./utils.js"
 import {executeCode} from "./executeCode.js"
 import {getObjectProperties, evolvePath} from "./utils.js";
-import {saveSketch, updateSavedSketch, saveCurrentSketch,getLastSavedSketch, removeSketch } from "./storage.js"
+import {saveSketch, updateSavedSketch, saveCurrentSketch,getLastSavedSketch, removeSketch, saveCurrentShaderCode, saveCurrentShaderGraph } from "./storage.js"
 import {not} from 'ramda';
-import {defaultSketch} from './defaultState';
+import {defaultSketch, defaultShader} from './defaultState';
 
 class Reducer {
   constructor(parent) {
@@ -56,7 +56,11 @@ class Reducer {
   }
 
   updateShader (code) {
-    return this.setState({shader: code});
+    return this.setState({shader: code}, state => saveCurrentShaderCode(state.shader));
+  }
+
+  updateShaderGraph (graph) {
+    return this.setState({shaderGraph: graph}, state => saveCurrentShaderGraph(state.shaderGraph));
   }
 
   updateSketchName(name) {
@@ -70,7 +74,7 @@ class Reducer {
   reloadGeometry () {
     return executeCode(this.state.currentCode,{print: this.log, clearConsole: this.clearConsole})
       .then(value => this.setState(value))
-      .then((newState) => saveCurrentSketch(newState.sketchName, newState.currentCode))
+      .then((newState) => saveCurrentSketch(newState.sketchName, newState.currentCode, newState.shader))
       .catch(err => this.log(err, "error"));
   }
 
@@ -80,16 +84,17 @@ class Reducer {
 
   loadSketch(sketch, isInDatabase) {
     var ss = a => this.setState(a, this.debouncedReloadGeometry);
+    const shader = sketch.shader || defaultShader()
     if (sketch.code) {
-      return ss({currentCode: sketch.code, sketchName: sketch.name, isInDatabase});
+      return ss({currentCode: sketch.code, sketchName: sketch.name, isInDatabase, shaderGraph: sketch.shaderGraph, shader});
     }
     if (sketch.content) {
-      return ss({currentCode: sketch.content, sketchName: sketch.name, isInDatabase});
+      return ss({currentCode: sketch.content, sketchName: sketch.name, isInDatabase, shaderGraph: sketch.shaderGraph, shader});
     }
     if (sketch.codeUrl) {
       return fetch(sketch.codeUrl)
         .then(response => response.text())
-        .then(str => ss({sketchName: sketch.name, currentCode: str, isInDatabase}))
+        .then(str => ss({sketchName: sketch.name, currentCode: str, isInDatabase, shader}))
     }
     return Promise.reject(new Error(sketch.toString() +" is not a valid sketch"));
   }
@@ -99,7 +104,7 @@ class Reducer {
   }
 
   saveSketch() {
-    return saveSketch(this.state.sketchName, this.state.currentCode)
+    return saveSketch(this.state.sketchName, this.state.currentCode, this.state.shaderGraph)
       .then(this.updateSavedSketch)
   }
 

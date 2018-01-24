@@ -29,14 +29,15 @@ export class GraphDisplay extends Component {
   mouseHelper = e => {
     const rect = this.refs.root.getBoundingClientRect();
     //console.log( e.clientX);
+    const zoom = this.props.viewport.zoom;
     return ({
       canvas: {
         x: e.clientX - rect.x,
         y: e.clientY - rect.y
       },
       world: {
-        x: e.clientX - rect.x - this.props.viewport.x,
-        y: e.clientY - rect.y - this.props.viewport.y
+        x: (e.clientX - rect.x)/zoom - this.props.viewport.x,
+        y: (e.clientY - rect.y)/zoom - this.props.viewport.y
       },
       event: e
     })
@@ -61,7 +62,7 @@ export class GraphDisplay extends Component {
   createAddNode = type => e => {
     e.preventDefault();
     e.stopPropagation();
-    this.props.events.onAddNode(this.mouseHelper(e).canvas, type);
+    this.props.events.onAddNode(this.mouseHelper(e).world, type);
   };
 
   render() {
@@ -95,7 +96,9 @@ export class GraphDisplay extends Component {
                 />
               )
             }
+            
           </Group>
+
           </svg>
       </ContextMenuTrigger>
 

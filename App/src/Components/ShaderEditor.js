@@ -7,26 +7,32 @@ import {ShaderEditor, GraphState, EditorState} from '../lib/shader-editor';
 import 'brace/ext/language_tools';
 
 class Editor extends Component {
-  state= {
-    graph: new GraphState(),
-    editor: new EditorState()
+  constructor(props) {
+    super(props);
+    this.state= {
+      editor: new EditorState()
+    }
   }
 
-  onGraphChange = newState => {
-    this.setState({graph: newState});
-  }
+
   onEditorChange = newState => {
     this.setState({editor: newState});
   }
+
+  onShaderChange = (shader, graph) => {
+    console.log("onShaderChange "+graph.data.nodes.length);
+    this.props.onShaderChange(shader, graph.data);
+  }
+
   render() {
     return (
       <div className="code-editor">
         <ShaderEditor
-          graph={this.state.graph}
+          graph={new GraphState(this.props.graphData)}
           editor={this.state.editor}
-          onGraphChange={this.onGraphChange}
+          onGraphChange={graph => this.props.onGraphChange(graph.data)}
           onEditorChange={this.onEditorChange}
-          onShaderChange={this.props.onShaderChange}
+          onShaderChange={this.onShaderChange}
         />
       </div>
     );

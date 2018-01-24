@@ -11,7 +11,7 @@ export const typeToGLSL = {
   "vector4": "vec4"
 }
 
-export const VectorFloatOperationOutputType = {
+export const VectorFloatOperation = {
   inputs: [
     { name: "A", type:"number|vector2|vector3|vector4", default: 0},
     { name: "B", type:"number|vector2|vector3|vector4", default: 0}
@@ -41,7 +41,61 @@ export const VectorFloatOperationOutputType = {
     const outputsPin = this.getOutputType(inputsPin);
     const pin = outputsPin[0];
     const GLSLType = typeToGLSL[pin.type]
-    console.log(pin,typeToGLSL, GLSLType, outputsPin)
+    if(!GLSLType) {
+      throw new Error(`Type "${pin.type}" is not a valid GLSL type`);
+    }
+    return `${GLSLType} ${outputs.value} = ${this.GLSLOperation(inputs.A, inputs.B)};`;
+  }
+}
+export const VectorTransformation = {
+  inputs: [
+    { name: "A", type:"number|vector2|vector3|vector4", default: 0},
+  ],
+  outputs: [
+    {name: "value", type: "number"}
+  ],
+  params: [
+
+  ],
+  GLSLOperation(A, B) {
+    throw new Error(`Vector / Float operation ${this.name} not implemented.`);
+  },
+  getOutputType(inputsTypes) {
+    return [{name: "value", type: inputsTypes.A}];
+  },
+  toGLSL(inputs, params, outputs, inputsPin) {
+    const outputsPin = this.getOutputType(inputsPin);
+    const pin = outputsPin[0];
+    const GLSLType = typeToGLSL[pin.type]
+    if(!GLSLType) {
+      throw new Error(`Type "${pin.type}" is not a valid GLSL type`);
+    }
+    return `${GLSLType} ${outputs.value} = ${this.GLSLOperation(inputs.A)};`;
+  }
+}
+
+
+export const SameTypeOperation = {
+  inputs: [
+    { name: "A", type:"number|vector2|vector3|vector4", default: 0},
+    { name: "B", type:"number|vector2|vector3|vector4", default: 0},
+  ],
+  outputs: [
+    {name: "value", type: "number"}
+  ],
+  params: [
+
+  ],
+  GLSLOperation(A, B) {
+    throw new Error(`Vector / Float operation ${this.name} not implemented.`);
+  },
+  getOutputType(inputsTypes) {
+    return [{name: "value", type: inputsTypes.A}];
+  },
+  toGLSL(inputs, params, outputs, inputsPin) {
+    const outputsPin = this.getOutputType(inputsPin);
+    const pin = outputsPin[0];
+    const GLSLType = typeToGLSL[pin.type]
     if(!GLSLType) {
       throw new Error(`Type "${pin.type}" is not a valid GLSL type`);
     }
@@ -64,15 +118,18 @@ export class NumberInput extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-  if (this.props.value !== nextProps.value) {
-    this.updateValueFromProps(nextProps);
+    //console.log("hehehehe"+nextProps.value);
+    if (this.props.value !== nextProps.value) {
+      this.updateValueFromProps(nextProps);
+    }
   }
-}
   onChange = (e) => {
     const value = e.target.value;
     const floatValue = parseFloat(value);
     this.setState({text: value});
-    if (!isNaN(floatValue)) {
+    //console.log(floatValue, this.state.value, floatValue !== this.state.value);
+    if (!isNaN(floatValue) && floatValue !== this.state.value) {
+      //console.log(floatValue + "  " + value)
       this.props.onChange(floatValue);
     }
   }
@@ -81,7 +138,6 @@ export class NumberInput extends Component {
   }
 
   render() {
-    const {onChange, ...props} = this.props;
-    return <input  {...this.props} value={this.state.text} onChange={this.onChange} onBlur={this.onBlur} {...props}/>
+    return <input  {...this.props} value={this.state.text} onChange={this.onChange} onBlur={this.onBlur} />
   }
 }

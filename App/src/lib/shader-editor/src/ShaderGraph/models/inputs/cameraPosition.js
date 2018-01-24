@@ -1,12 +1,12 @@
 
 const node = {
-  name: "Screen Position",
+  name: "Camera Position",
   category: "inputs",
   outputs: [
-    {name: "value", type: "vector2"}
+    {name: "value", type: "vector3"}
   ],
   toGLSL: (inputs, params, outputs) => {
-    return `vec2 ${outputs.value} = vScreenPosition;`;
+    return `vec3 ${outputs.value} = cameraPosition;`;
   }
 }
 

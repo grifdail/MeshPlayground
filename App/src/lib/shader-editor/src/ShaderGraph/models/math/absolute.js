@@ -1,14 +1,11 @@
+import {VectorTransformation} from "../../utils.js"
+
 export const Abs = {
+  ...VectorTransformation,
   name: "Absolute",
   category: "math",
-  inputs: [
-    {name:"A", type:"float"},
-  ],
-  outputs: [
-    {name:"value", type:"float"}
-  ],
-  toGLSLS(inputs, outputs, params) {
-    return `float ${outputs.value} = abs(${inputs.A});`;
+  GLSLOperation(A) {
+    return `abs(${A})`;
   }
 }
 

@@ -6,7 +6,7 @@ export const Length = {
     {name:"vector", type:"vector3"},
   ],
   outputs: [
-    {name:"length", type:"float"}
+    {name:"length", type:"number"}
   ],
   toGLSL(inputs, params, outputs) {
     return `float ${outputs.length} = length(${inputs.vector});`;

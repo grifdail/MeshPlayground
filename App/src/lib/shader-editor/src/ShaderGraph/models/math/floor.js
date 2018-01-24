@@ -1,15 +1,10 @@
-
+import {VectorTransformation} from "../../utils.js"
 export const Floor = {
+  ...VectorTransformation,
   name: "Floor",
   category: "math",
-  inputs: [
-    {name:"A", type:"float"},
-  ],
-  outputs: [
-    {name:"value", type:"float"}
-  ],
-  toGLSL(inputs, params, outputs) {
-    return `float ${outputs.value} = floor(${inputs.A});`;
+  GLSLOperation(A) {
+    return `acos(${A})`;
   }
 }
 

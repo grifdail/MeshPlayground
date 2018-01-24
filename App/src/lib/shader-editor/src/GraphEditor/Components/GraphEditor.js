@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {GraphDisplay} from './GraphDisplay.js';
 import {GraphState} from '../State/GraphState.js';
 import {EditorState} from '../State/EditorState.js';
-import {map, reduce} from "ramda";
+import {map, reduce, mergeWith, add} from "ramda";
 
 export class GraphEditor extends Component {
 
@@ -22,7 +22,8 @@ export class GraphEditor extends Component {
     onUpdateDrag: (newPosition) => {
       const op = this.props.editor.data.dragInitialPos;
       const selectedNode = this.props.editor.data.draggedItems;
-      const delta = {x: newPosition.x - op.x, y: newPosition.y - op.y};
+      const scale = this.props.editor.data.viewport.zoom;
+      const delta = {x: (newPosition.x - op.x), y: (newPosition.y - op.y)};
       this.graphChanges.push(GraphState.updateNodePosition(delta, selectedNode));
       this.editorChanges.push(EditorState.updateDrag(newPosition));
     },
@@ -40,7 +41,7 @@ export class GraphEditor extends Component {
       this.editorChanges.push(EditorState.updateMousePosition(e));
     },
     onScroll: (e) => {
-      this.editorChanges.push(EditorState.zoom(e.deltaY));
+      this.editorChanges.push(EditorState.zoom(-e.deltaY));
     },
 
     onAddNode: (pos, type) => {
@@ -48,7 +49,10 @@ export class GraphEditor extends Component {
     },
 
     onClick: (e, state) => {
-      //return this._events.onAddNode(e.canvas, state);
+      console.log("hehehe0");
+      if (this.props.editor.data.startingPin) {
+        return this.editorChanges.push(EditorState.endConnection());
+      }
     },
 
     onClickPin: (node, input, output) => {
@@ -102,7 +106,7 @@ export class GraphEditor extends Component {
     const {startingPin, mousePosition} = editor.data;
     return {
       from: startingPin.input ? mousePosition : startingPin,
-      to : startingPin.input ? startingPin : mousePosition,
+      to : startingPin.input ? startingPin : mergeWith(add, {x:-1},mousePosition),
       name: "mouse",
       color: "blue"
     }
@@ -111,8 +115,8 @@ export class GraphEditor extends Component {
   render() {
     const {fields, models, graph, editor, colorByType} = this.props;
     const {nodes, edges} = graph.data;
-    const {startingPin, viewport} = editor.data;
+    const {startingPin, viewport, mousePosition} = editor.data;
     const displayEdges = startingPin ? [...edges,this.getMouseEdge()] : edges;
-    return <GraphDisplay models={models} nodes={nodes} colorByType={colorByType} edges={displayEdges} events={this.events} fields={fields} viewport={viewport}/>
+    return <GraphDisplay models={models} nodes={nodes} colorByType={colorByType} edges={displayEdges} events={this.events} fields={fields} viewport={viewport} pointer={mousePosition}/>
   }
 }

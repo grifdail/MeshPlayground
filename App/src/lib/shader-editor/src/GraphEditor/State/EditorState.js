@@ -50,7 +50,7 @@ export class EditorState {
   }
 
   zoom(delta) {
-    return new EditorState(updatePath(["viewport", "zoom"], oldZoom => Math.min(1, Math.max(0.1, oldZoom+Math.sign(delta)*0.1)), this.data))
+    return new EditorState(updatePath(["viewport", "zoom"], oldZoom => Math.min(1.5, Math.max(0.1, oldZoom*(1+Math.sign(delta)*0.05))), this.data))
   }
   updatePan(newPosition) {
     const op = this.data.mousePositionCanvas;

@@ -1,16 +1,22 @@
+import {typeToGLSL} from "../../utils.js";
+
 export const Lerp = {
   name: "Lerp",
   category: "math",
   inputs: [
-    {name:"from", type:"float"},
-    {name:"to", type:"float"},
+    {name:"from", type:"number|vector2|vector3|vector4"},
+    {name:"to", type:"number|vector2|vector3|vector4"},
     {name:"t", type:"float"},
   ],
   outputs: [
-    {name:"length", type:"float"}
+    {name:"value", type:"float"}
   ],
-  toGLSL(inputs, params, outputs) {
-    return `float ${outputs.length} = ùix(${inputs.from}, ${inputs.to}, ${inputs.to});`;
+  getOutputType(inputsTypes) {
+    return [{name: "value", type: inputsTypes.from}];
+  },
+  toGLSL(inputs, params, outputs, inputsTypes) {
+    var type = this.getOutputType(inputsTypes, params)[0];
+    return `${typeToGLSL[type.type]} ${outputs.value} =  mix(${inputs.from}, ${inputs.to}, ${inputs.t});`;
   }
 }
 
