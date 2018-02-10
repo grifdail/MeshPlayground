@@ -1,6 +1,6 @@
 export const Dot = {
   name: "Dot product",
-  category: "vector3",
+  category: "vector",
   inputs: [
     {name:"A", type:"vector3"},
     {name:"B", type:"vector3"},

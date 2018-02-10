@@ -1,10 +1,11 @@
 import {VectorTransformation} from "../../utils.js"
+
 const node = {
   ...VectorTransformation,
-  name: "Arctangent",
-  category: "trigonometry",
+  name: "Remap [-1,1] to [0,1]",
+  category: "math",
   GLSLOperation(A) {
-    return `atan(${A})`;
+    return `${A} * 0.5 + 0.5`;
   }
 }
 

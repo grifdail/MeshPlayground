@@ -1,15 +1,15 @@
 
 export const Normalize = {
   name: "Normalize",
-  category: "vector3",
+  category: "vector",
   inputs: [
     {name:"vector", type:"vector3"},
   ],
   outputs: [
-    {name:"length", type:"float"}
+    {name:"normalized", type:"vector3"}
   ],
   toGLSL(inputs, params, outputs) {
-    return `vec3 ${outputs.length} = normalize(${inputs.vector});`;
+    return `vec3 ${outputs.normalized} = normalize(${inputs.vector});`;
   }
 }
 

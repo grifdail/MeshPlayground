@@ -1,7 +1,7 @@
 
 export const Length = {
   name: "Length",
-  category: "vector3",
+  category: "vector",
   inputs: [
     {name:"vector", type:"vector3"},
   ],

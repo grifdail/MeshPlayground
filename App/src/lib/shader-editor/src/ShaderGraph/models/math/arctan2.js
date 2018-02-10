@@ -1,7 +1,7 @@
 
 const node = {
   name: "Arctangent2",
-  category: "math",
+  category: "trigonometry",
   inputs: [
     { name: "X", type:"number", default: 0},
     { name: "Y", type:"number", default: 0}

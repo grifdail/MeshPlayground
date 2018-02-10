@@ -3,7 +3,7 @@ import{VectorFloatOperation} from "../../utils.js";
 const node = {
   ...VectorFloatOperation,
   name: "Modulo",
-  category: "math",
+  category: "math basic",
 
   GLSLOperation: (A, B) => `mod(${A}, ${B})`
 }

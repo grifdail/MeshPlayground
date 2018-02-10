@@ -3,7 +3,7 @@ import {VectorTransformation} from "../../utils.js"
 const node = {
   ...VectorTransformation,
   name: "Arccosine",
-  category: "math",
+  category: "trigonometry",
   GLSLOperation(A) {
     return `acos(${A})`;
   }

@@ -4,8 +4,7 @@ import{VectorFloatOperation} from "../../utils.js";
 const node = {
     ...VectorFloatOperation,
   name: "Division",
-  category: "math",
-
+  category: "math basic",
   GLSLOperation: (A, B) => `${A} / ${B}`
 }
 

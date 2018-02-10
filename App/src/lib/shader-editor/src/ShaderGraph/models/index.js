@@ -29,13 +29,14 @@ const list = [
   require('./math/lerp.js').default,
   require('./math/clamp.js').default,
   require('./math/floor.js').default,
+  require('./math/remap01to11.js').default,
+  require('./math/remap11to01.js').default,
 
   require('./vector3/compose.js').default,
   require('./vector3/decompose.js').default,
   require('./vector3/cross.js').default,
   require('./vector3/dot.js').default,
   require('./vector3/length.js').default,
-  require('./vector3/lerp.js').default,
   require('./vector3/normalize.js').default,
 
   require('./shading/lambert.js').default,

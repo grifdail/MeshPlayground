@@ -4,7 +4,7 @@ export const Floor = {
   name: "Floor",
   category: "math",
   GLSLOperation(A) {
-    return `acos(${A})`;
+    return `floor(${A})`;
   }
 }
 

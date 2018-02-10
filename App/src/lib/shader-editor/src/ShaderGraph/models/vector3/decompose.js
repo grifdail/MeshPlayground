@@ -1,7 +1,7 @@
 
 const node = {
   name: "Decompose",
-  category: "vector3",
+  category: "vector",
   inputs: [
     {name: "value", type: "vector3"}
   ],

@@ -4,7 +4,7 @@ import{SameTypeOperation} from "../../utils.js";
 const node = {
   ...SameTypeOperation,
   name: "Addition",
-  category: "math",
+  category: "math basic",
   GLSLOperation: (A, B) => `${A} + ${B}`
 }
 

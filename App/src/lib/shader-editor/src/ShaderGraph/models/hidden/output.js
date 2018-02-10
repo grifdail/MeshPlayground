@@ -1,7 +1,7 @@
 
 const node = {
   name: "Output",
-  category: "vector3",
+  category: "hidden",
   canBeCreated: false,
   canBeDestroyed: false,
   inputs: [

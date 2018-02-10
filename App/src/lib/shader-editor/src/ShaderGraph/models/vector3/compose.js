@@ -1,7 +1,7 @@
 
 const node = {
   name: "Compose",
-  category: "vector3",
+  category: "vector",
   inputs: [
     { name: "X", type:"number", default: 0},
     { name: "Y", type:"number", default: 0},

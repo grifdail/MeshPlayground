@@ -2,7 +2,7 @@ import {VectorTransformation} from "../../utils.js"
 const node = {
   ...VectorTransformation,
   name: "Tangent",
-  category: "math",
+  category: "trigonometry",
   GLSLOperation(A) {
     return `tan(${A})`;
   }

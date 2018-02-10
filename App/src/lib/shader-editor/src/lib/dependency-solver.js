@@ -1,3 +1,6 @@
+//Via https://www.npmjs.com/package/dependency-solver
+//The module did not build under webpack so i had to inline everything.
+
 module.exports.solve              = solve;
 module.exports.addMissingKeys     = addMissingKeys;
 module.exports.getEdges           = getEdges;
@@ -13,7 +16,7 @@ function solve(g) {
     let inDegree = getInDegree(graph);
 
     // Create a queue and enqueue vertices with in-degree of 0
-    let queue    = []; 
+    let queue    = [];
 
     for(let key in graph) {
         if(inDegree[key] == 0) {
