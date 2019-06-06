@@ -3,6 +3,8 @@
 const list = [
   require('./const/number.js').default,
   require('./const/vector3.js').default,
+  require('./const/pi.js').default,
+  require('./const/tau.js').default,
 
   require('./inputs/time.js').default,
   require('./inputs/normal.js').default,
@@ -10,6 +12,10 @@ const list = [
   require('./inputs/position.js').default,
   require('./inputs/screenPosition.js').default,
   require('./inputs/cameraPosition.js').default,
+  require('./inputs/backgroundColor.js').default,
+  require('./inputs/uv.js').default,
+  require('./texture/image.js').default,
+  //require('./texture/sample.js').default,
 
   require('./math/addition.js').default,
   require('./math/division.js').default,
@@ -27,10 +33,17 @@ const list = [
   require('./math/max.js').default,
   require('./math/absolute.js').default,
   require('./math/lerp.js').default,
+  require('./math/inversLerp.js').default,
   require('./math/clamp.js').default,
+  require('./math/clamp01.js').default,
   require('./math/floor.js').default,
   require('./math/remap01to11.js').default,
   require('./math/remap11to01.js').default,
+  require('./math/pow.js').default,
+  require('./math/log.js').default,
+  require('./math/exp.js').default,
+  require('./math/random.js').default,
+  require('./math/posterize.js').default,
 
   require('./vector3/compose.js').default,
   require('./vector3/decompose.js').default,
@@ -40,6 +53,8 @@ const list = [
   require('./vector3/normalize.js').default,
 
   require('./shading/lambert.js').default,
+
+
 
 
   require('./logic/if.js').default,

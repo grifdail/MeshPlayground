@@ -73,6 +73,27 @@ export const ExtentionMethodes = {
     const y = 1-(posY + Math.floor(value/height))/height;
     return [new Vector3(x,y), new Vector3(x+1/width,y), new Vector3(x+1/width, y-1/height), new Vector3(x, y-1/height)];
   },
+  bezierQuad(p1,cp,p2,t) {
+    return  Vector3.lerp(
+        Vector3.lerp(p1,cp,t),
+        Vector3.lerp(cp,p2,t),
+      t);
+  },
+  bezier(p1,cp1,cp2,p2,t) {
+    return  ExtentionMethodes.bezierQuad(
+        Vector3.lerp(p1,cp1,t),
+        Vector3.lerp(cp1,cp2,t),
+        Vector3.lerp(cp2,p2,t),
+      t);
+  },
+  bezierTangente(p1,cp1,cp2,p2,t) {
+    var epsilon = 0.001;
+    var v1 = ExtentionMethodes.bezier(p1,cp1,cp2,p2,t-epsilon);
+    var v2 = ExtentionMethodes.bezier(p1,cp1,cp2,p2,t+epsilon);
+    return Vector3.subtract(v2,v1).scale(0.5/epsilon);
+  },
+  //BezierTangante
+
 
 
   //Below are math methodes that are gonna be overwriten

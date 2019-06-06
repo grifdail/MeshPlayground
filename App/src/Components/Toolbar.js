@@ -38,7 +38,7 @@ const Checkbox = ({value, label, onChange}) => {
   </div>);
 }
 
-function Toolbar({sketchName, savedSketches, isInDatabase, camera:{autoRotate}, reducer: {reloadGeometry, updateSketchName, resetSketch, deleteSketch, saveSketch,  loadSketch, resetCamera, toogleCameraRotation}}) {
+function Toolbar({sketchName, savedSketches, geometry, isInDatabase, camera:{autoRotate}, reducer: {reloadGeometry, updateSketchName, resetSketch, deleteSketch, saveSketch,  loadSketch, resetCamera, toogleCameraRotation}}) {
   const files = getFilesList(savedSketches);
   const confDelete = () => (confirm("Are you sure you want to delete sketch "+sketchName+" ?") ? deleteSketch() : null); // eslint-disable-line no-restricted-globals
   return (
@@ -64,8 +64,8 @@ function Toolbar({sketchName, savedSketches, isInDatabase, camera:{autoRotate}, 
         </Dropdown>
         <Dropdown item icon="download" text="Export" className='left' >
           <Dropdown.Menu>
-            <Dropdown.Item onClick={exportToPly}>Export as .ply</Dropdown.Item>
-            <Dropdown.Item onClick={exportToObj}>Export as .obj</Dropdown.Item>
+            <Dropdown.Item onClick={() => exportToPly(geometry)}>Export as .ply</Dropdown.Item>
+            <Dropdown.Item onClick={() => exportToObj(geometry)}>Export as .obj</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
 

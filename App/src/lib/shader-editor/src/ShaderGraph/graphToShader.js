@@ -2,7 +2,7 @@ import {FragmentShader, DefaultVertexShader, DefaultFragmentShader} from "./temp
 import {pick} from "ramda";
 
 import { solve } from '../lib/dependency-solver.js';
-import {__, prop, map, join, curry, compose, pluck } from 'ramda';
+import {__, prop, map, join, curry, compose, pluck, uniq } from 'ramda';
 
 function removeLonelyNode(simplifiedGraph, source) {
   let requiredNodes = [source];
@@ -49,7 +49,7 @@ const getCodeForNode = curry((models, node) => {
   }, {});
   return {
     main:  model.toGLSL(inputs, params, outputs, node.inputsTypes),
-    uniforms:  model.requireUniform(inputs, params, outputs)
+    uniforms:  model.requireUniform(inputs, params, outputs, node.inputsTypes)
   };
 })
 
@@ -74,7 +74,7 @@ export function calculateShader(graph, models) {
 
   const code = {
     main : join("\n", pluck("main", codeFragments)),
-    uniforms : join("\n", pluck("uniforms", codeFragments)),
+    uniforms : join("\n", uniq(pluck("uniforms", codeFragments))),
   }
 
   console.log( FragmentShader(code));

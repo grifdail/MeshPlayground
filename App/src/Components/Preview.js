@@ -80,19 +80,21 @@ class Preview extends Component {
       texture = new THREE.Texture();
       texture.image = this.props.texture;
       const src = this.props.texture.src;
-      var isJPEG = src.search( /\.(jpg|jpeg)$/ ) > 0 || src.search( /^data:image\/jpeg/ ) === 0;
+      var isJPEG =  src && (src.search( /\.(jpg|jpeg)$/ ) > 0 || src.search( /^data:image\/jpeg/ ) === 0);
 			texture.format = isJPEG ? THREE.RGBFormat : THREE.RGBAFormat;
       texture.needsUpdate = true;
     }
+    var backgroundColor = this.props.backgroundColor === undefined ? 0x888888 :  this.props.backgroundColor;
     this.uniforms = {
-      time: {value: Date.now()/1000}
+      time: {value: Date.now()/1000},
+      image1: {value: texture},
+      backgroundColor: {value: new THREE.Color(backgroundColor)}
     };
     var material = new THREE.ShaderMaterial( {
     	uniforms: this.uniforms,
       vertexColors: true,
     	vertexShader: this.props.shader.vertex,
     	fragmentShader: this.props.shader.fragment
-
     } );
     mesh.material = material; //=  new THREE.MeshPhongMaterial( {color: 0xffffff, shininess: 0.1, vertexColors: THREE.VertexColors,  map: texture } );
   }

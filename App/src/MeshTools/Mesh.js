@@ -350,19 +350,29 @@ export class Mesh {
       colors[ii+0] = vColors.reduce((s,j) => s+j.r/count, 0);
       colors[ii+1] = vColors.reduce((s,j) => s+j.g/count, 0);
       colors[ii+2] = vColors.reduce((s,j) => s+j.b/count, 0);
-      const n = vNormals.reduce((s,j) => s.add(j)).normalize();
+      const n = vNormals.reduce((s,j) => s.add(j.divideScalar(count))).normalize();
 
-      normals[ii+0] = n.x;
-      normals[ii+1] = n.y;
-      normals[ii+2] = n.z;
+      normals[ii+0] = toFixed(n.x);
+      normals[ii+1] = toFixed(n.y);
+      normals[ii+2] = toFixed(n.z);
       uvs[index*2+0] = uv.x;
       uvs[index*2+1] = uv.y;
       return index;
     }
-
+    var toFixed = n => Math.round(n*100000)/100000;
 
     this._faces.forEach(item => {
-      let faceNormal = new THREE.Vector3(0,0,0).crossVectors( new THREE.Vector3().subVectors(item.v2, item.v1),  new THREE.Vector3().subVectors(item.v3, item.v1)).normalize();
+      var v1 = item.v1;
+      var v2 = item.v2;
+      var v3 = item.v3;
+      var a = new THREE.Vector3(v2.x-v1.x, v2.y-v1.y, v2.z-v1.z).normalize();
+      var b = new THREE.Vector3(v3.x-v1.x, v3.y-v1.y, v3.z-v1.z).normalize();
+      var faceNormal = new THREE.Vector3(
+        a.y * b.z - a.z * b.y,
+        a.z * b.x - a.x * b.z,
+        a.x * b.y - a.y * b.x
+      );
+      //let faceNormal = new THREE.Vector3(0,0,0).crossVectors( new THREE.Vector3().subVectors(item.v2, item.v1),  new THREE.Vector3().subVectors(item.v3, item.v1)).normalize();
       indexes.push(
         addVertex(item.v1, faceNormal, item.color, item.uv1),
         addVertex(item.v2, faceNormal, item.color, item.uv2),
@@ -370,11 +380,14 @@ export class Mesh {
       );
     })
     // itemSize = 3 because there are 3 values (components) per vertex
-    geometry.addAttribute( 'position', new THREE.Float32BufferAttribute( positions, 3 ) );
+
+
     geometry.addAttribute( 'normal', new THREE.Float32BufferAttribute( normals, 3 ) );
     geometry.addAttribute( 'color', new THREE.Float32BufferAttribute( colors, 3 ) );
     geometry.addAttribute( 'uv', new THREE.Float32BufferAttribute( uvs, 2 ) );
+    geometry.addAttribute( 'position', new THREE.Float32BufferAttribute( positions, 3 ) );
     geometry.setIndex( new THREE.Uint16BufferAttribute( indexes, 1 ) );
+    //geometry.computeVertexNormals();
     return geometry;
   }
 }

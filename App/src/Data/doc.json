@@ -856,9 +856,90 @@
         "hidden": false
     },
     {
+        "name": "bezierQuad",
+        "type": "function",
+        "description": null,
+        "tags": [
+            "Math"
+        ],
+        "params": [
+            {
+                "name": "p1"
+            },
+            {
+                "name": "cp"
+            },
+            {
+                "name": "p2"
+            },
+            {
+                "name": "t"
+            }
+        ],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "bezier",
+        "type": "function",
+        "description": null,
+        "tags": [
+            "Math"
+        ],
+        "params": [
+            {
+                "name": "p1"
+            },
+            {
+                "name": "cp1"
+            },
+            {
+                "name": "cp2"
+            },
+            {
+                "name": "p2"
+            },
+            {
+                "name": "t"
+            }
+        ],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "bezierTangente",
+        "type": "function",
+        "description": null,
+        "tags": [
+            "Math"
+        ],
+        "params": [
+            {
+                "name": "p1"
+            },
+            {
+                "name": "cp1"
+            },
+            {
+                "name": "cp2"
+            },
+            {
+                "name": "p2"
+            },
+            {
+                "name": "t"
+            }
+        ],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
         "name": "abs",
         "type": "function",
-        "description": "Below are math methodes that are gonna be overwriten",
+        "description": "BezierTangante",
         "tags": [
             "Math"
         ],

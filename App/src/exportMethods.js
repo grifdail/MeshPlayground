@@ -1,6 +1,7 @@
 import {download} from "./utils.js"
 
 export function exportToPly(geometry, name = "model") {
+  console.log(geometry, geometry.getAttribute);
   var positions = geometry.getAttribute("position").array;
   var colors = geometry.getAttribute("color").array;
   var vertexCount = positions.length / 3;
@@ -28,7 +29,8 @@ export function exportToPly(geometry, name = "model") {
     }
   }
   var result = header+vertexStr+faceStr;
-  download(name+".ply", result);
+  console.log(result.length);
+  download(name+".ply");
 }
 
 export function exportToObj(geometry, name = "model") {
@@ -46,6 +48,7 @@ export function exportToObj(geometry, name = "model") {
 
   }
   var result = vertexStr+faceStr;
+//console.log(result);
   download(name+".obj", result);
 }
 
