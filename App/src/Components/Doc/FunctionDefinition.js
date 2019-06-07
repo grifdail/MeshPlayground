@@ -6,7 +6,7 @@ import TemplateDefinition from "./TemplateDefinition.js"
 import PropertyList from "./PropertyList.js"
 
 
-const FunctionDefinition = ({...props, name, params, returnValue}) => {
+const FunctionDefinition = ({name, params, returnValue, ...props}) => {
 
   const displayName = `${name}(${params.map(prop('name')).join(', ')})`;
   return (

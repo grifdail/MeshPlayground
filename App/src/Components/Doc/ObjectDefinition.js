@@ -3,7 +3,7 @@ import TemplateDefinition from "./TemplateDefinition.js"
 import { Accordion} from 'semantic-ui-react';
 import DefinitionGroup from "./DefinitionGroup.js"
 
-const ObjectDefinition = ({...props, properties}) => {
+const ObjectDefinition = ({properties, ...props}) => {
   const panels = [
     {
       title: 'Properties',

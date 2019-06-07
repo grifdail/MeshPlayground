@@ -1,4 +1,4 @@
-import StackTracey  from '../lib/stacktracey.js';
+import StackTracey  from 'stacktracey';
 
 export function Error(message, remove = 1) {
   const stack = new StackTracey();

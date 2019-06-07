@@ -5,7 +5,7 @@ import PropertyList from "./PropertyList.js"
 import DefinitionGroup from "./DefinitionGroup.js"
 
 
-const ClassDefinition = ({...props, properties, methodes, statics}) => {
+const ClassDefinition = ({properties, methodes, statics, ...props}) => {
   const panels = [
     {
       title: 'Properties',
