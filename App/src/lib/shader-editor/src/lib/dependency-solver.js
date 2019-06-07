@@ -1,6 +1,6 @@
 //Via https://www.npmjs.com/package/dependency-solver
 //The module did not build under webpack so i had to inline everything.
-
+/*
 module.exports.solve              = solve;
 module.exports.addMissingKeys     = addMissingKeys;
 module.exports.getEdges           = getEdges;
@@ -9,8 +9,8 @@ module.exports.getInDegree        = getInDegree;
 // Alternative domain-specific aliases
 module.exports.getDependencyLines = getEdges;
 module.exports.getDependedBy      = getInDegree;
-
-function solve(g) {
+*/
+export function solve(g) {
     let graph    = addMissingKeys(g);
     let edges    = getEdges(graph);
     let inDegree = getInDegree(graph);

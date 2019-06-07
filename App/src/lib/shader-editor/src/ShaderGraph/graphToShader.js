@@ -1,8 +1,9 @@
 import {FragmentShader, DefaultVertexShader, DefaultFragmentShader} from "./templateShader.js";
 import {pick} from "ramda";
 
-import { solve } from '../lib/dependency-solver.js';
+import {solve} from '../lib/dependency-solver.js';
 import {__, prop, map, join, curry, compose, pluck, uniq } from 'ramda';
+console.log(solve);
 
 function removeLonelyNode(simplifiedGraph, source) {
   let requiredNodes = [source];

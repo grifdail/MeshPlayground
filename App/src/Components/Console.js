@@ -1,6 +1,6 @@
 import React from "react";
 import { Message } from 'semantic-ui-react';
-import StackTracey  from '../lib/stacktracey';
+import StackTracey  from 'stacktracey';
 
 const parseError = err => ({message: err.message, stack: new StackTracey(err)});
 
