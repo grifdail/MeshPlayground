@@ -261,6 +261,7 @@ Promise.all([
   parseFile(path.join(__dirname,"src","MeshTools", "Primitives","SymetricalTransformedMesh.js")),
   parseFile(path.join(__dirname,"src","MeshTools", "Primitives","VoxelizedVolume.js")),
   parseFile(path.join(__dirname,"src","MeshTools", "Primitives","ConvexVolume.js")),
+  parseFile(path.join(__dirname,"src","MeshTools", "Primitives","IcoSphere.js")),
   parseFile(path.join(__dirname,"src","MeshTools", "Utils","Utils.js")),
   staticDoc
 ]).then(([

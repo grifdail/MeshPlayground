@@ -6,7 +6,7 @@ export const Dot = {
     {name:"B", type:"vector3"},
   ],
   outputs: [
-    {name:"value", type:"float"}
+    {name:"value", type:"number"}
   ],
   toGLSL(inputs, params, outputs) {
     return `float ${outputs.value} = dot(${inputs.A}, ${inputs.B});`;

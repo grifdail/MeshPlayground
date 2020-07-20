@@ -33,6 +33,7 @@ class DefinitionGroup extends Component {
     this.state = {itemCount: 10}
   }
   loadMore = () => {
+    console.log("hhhhhhhhhh");
     this.setState(oldState => ({itemCount: oldState.itemCount+=10}));
   }
   componentWillReceiveProps(nextProps) {
@@ -46,20 +47,17 @@ class DefinitionGroup extends Component {
     const filterFunction = getFilterFunction(filter);
     const children = content
       .filter(item => (filterFunction(item) && ItemByType[item.type]))
-      .slice(0, this.state.itemCount)
+      //.slice(0, this.state.itemCount)
       .map((item,i) => {
         const Item = ItemByType[item.type];
         return <Item {...item} onSelectTag={onSelectTag} key={i}/>
       });
     return (
-      <InfiniteScroll
-          loadMore={this.loadMore}
-          hasMore={itemCount < content.length}
-          loader={<div className="loader">Loading ...</div>}
-          useWindow={false}
+      <div
+          
       >
-          <Item.Group>{ children }</Item.Group>
-      </InfiniteScroll>
+          <div class="ui items">{ children }</div>
+      </div>
     )
 
   }

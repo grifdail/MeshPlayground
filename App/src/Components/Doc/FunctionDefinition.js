@@ -7,11 +7,11 @@ import PropertyList from "./PropertyList.js"
 
 
 const FunctionDefinition = ({name, params, returnValue, ...props}) => {
-
+	console.log(name, props);
   const displayName = `${name}(${params.map(prop('name')).join(', ')})`;
   return (
     <TemplateDefinition {...props} name={displayName} >
-      {returnValue ? <p>return a <Icon name={getIconForType(returnValue.type)}/>{returnValue.type} {returnValue.description}</p> : null}
+      {returnValue ? <p>return a <Icon name={getIconForType(returnValue.type)}/>{returnValue.type} {props.description}</p> : null}
       <PropertyList content={params}/>
     </TemplateDefinition>
   )
