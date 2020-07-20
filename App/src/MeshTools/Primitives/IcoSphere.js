@@ -1,6 +1,7 @@
 import {Mesh} from "../Mesh.js";
 import * as THREE from "three";
 
+import {Vector3} from "../Utils/Vector3.js";
 
 
 /** A basic sphere
@@ -15,9 +16,9 @@ export class IcoSphere extends Mesh {
     this.scale(radius, radius, radius);
     var data = icosphere(subdivisions);
     data.cells.forEach(_face => {
-      var v1 = new THREE.Vector3().fromArray(data.positions[_face[0]]);
-      var v2 = new THREE.Vector3().fromArray(data.positions[_face[1]]);
-      var v3 = new THREE.Vector3().fromArray(data.positions[_face[2]]);
+      var v1 =  Vector3.fromArray(data.positions[_face[0]]);
+      var v2 =  Vector3.fromArray(data.positions[_face[1]]);
+      var v3 = Vector3.fromArray(data.positions[_face[2]]);
       this.addFace(v1, v2, v3, getUv(v1), getUv(v2), getUv(v3));
     });
     this.pop();
@@ -38,7 +39,7 @@ function getUv( coord ) {
 
   var [ lon, lat ] = cartesianToPolar(coord);
 
-  return new THREE.Vector2(lon/360, 0.5+lat/180)
+  return new Vector3(lon/360, 0.5+lat/180,0)
 
 }
 

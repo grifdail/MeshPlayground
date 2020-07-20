@@ -1,7 +1,7 @@
 import {Mesh} from "../Mesh.js";
 import * as THREE from "three";
 
-const Vector3 = (...a) => new THREE.Vector3(...a);
+import {Vector3} from "../Utils/Vector3.js";
 
 /** A prism primitive
   @tag mesh

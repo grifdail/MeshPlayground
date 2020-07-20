@@ -196,6 +196,9 @@ export class Vector3 extends THREE.Vector3 {
     }
     return this.clone().applyQuaternion(q);
   }
+  wqt() {
+
+  }
 
   /**   Return new Vector3(x,x,x) */
   static all(x) {return new Vector3(x,x,x);}
@@ -217,7 +220,7 @@ export class Vector3 extends THREE.Vector3 {
   static right() {return new Vector3(1,0,0);}
 
   static isVector(v) {
-    return typeof v === "object" && v.isVector;
+    return typeof v === "object" && v.isVector3;
   }
   /**
     return the dot product between two vector
@@ -309,6 +312,9 @@ export class Vector3 extends THREE.Vector3 {
   //Lerp between 4 vector according to u and v parameters;
   static UVLerp(topLeft, topRight, bottomRight, bottomLeft, u, v) {
     return Vector3.lerp( Vector3.lerp(topLeft, topRight, u), Vector3.lerp(bottomLeft, bottomRight, u), v);
+  }
+  static fromArray([x,y,z]) {
+    return new Vector3(x,y,z);
   }
 
 

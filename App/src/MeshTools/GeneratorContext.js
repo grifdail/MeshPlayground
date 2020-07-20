@@ -6,6 +6,7 @@ import {Color} from "./Utils/Color.js";
 import {Quaternion} from "./Utils/Quaternion.js";
 import * as ColorPalettes from "./Utils/ColorPalettes.js";
 import * as Pico8Colors from "./Utils/Pico8Colors.js";
+import * as Endesga64 from "./Utils/Endesga64.js";
 import * as Utils from "./Utils/Utils.js";
 import {Debug} from "./Debug.js";
 import {ParamError} from "./Error.js";
@@ -56,5 +57,5 @@ export class GeneratorContext extends Mesh {
 Object.assign(GeneratorContext.prototype, MathExtensions, Utils, Primitives, {
   Vector3, Color, Quaternion,
   Debug,Mesh,
-  ColorPalettes, Pico8Colors
+  ColorPalettes, Pico8Colors, Endesga64
 });

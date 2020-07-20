@@ -22,15 +22,16 @@ export function exportToPly(geometry, name = "model") {
   var vertexStr = "";
   var faceStr = "";
   var tc = n => Math.floor(255* n);
+  var tn = toNumberString;
   for (var i = 0; i < positions.length; i+=3) {
-    vertexStr+= [positions[i + 0], positions[i + 1], positions[i + 2], tc(colors[i + 0]), tc(colors[i + 1]), tc(colors[i + 2])].join(" ")+"\n";;
+    vertexStr+= [tn(positions[i + 0]), tn(positions[i + 1]), tn(positions[i + 2]), tc(colors[i + 0]), tc(colors[i + 1]), tc(colors[i + 2])].join(" ")+"\n";;
     if((i%9)===0) {
       faceStr+="3 "+[i/3, i/3+1, i/3+2].join(" ")+"\n";
     }
   }
   var result = header+vertexStr+faceStr;
   console.log(result.length);
-  download(name+".ply");
+  download(name+".ply", result);
 }
 
 export function exportToObj(geometry, name = "model") {
@@ -53,9 +54,17 @@ export function exportToObj(geometry, name = "model") {
 }
 
 function toNumberString(num) {
+  console.log(num);
   if (Number.isInteger(num)) {
     return num + ".0"
   } else {
-    return num.toString();
+    if (Math.abs(num)<0.001) {
+      console.log ("0.0");
+
+      return "0.0"
+    } else {
+      return num.toString();
+    }
+    
   }
 }

@@ -7,12 +7,18 @@ import Toolbar from "./Toolbar.js";
 import {getDefaultState} from "../defaultState.js"
 import Reducer from "../reducer.js"
 import Mousetrap from 'mousetrap'
+import {isUserConnected} from "../githubConnection.js";
 
 class App extends Component {
   constructor() {
     super();
       this.state = getDefaultState();
-     this.reducer = this.createReducer();
+      this.reducer = this.createReducer();
+      setTimeout(() => {
+        if (isUserConnected()) {
+          this.reducer.initiateLogin();
+        }
+      }, 3000)
   }
 
   createReducer() {

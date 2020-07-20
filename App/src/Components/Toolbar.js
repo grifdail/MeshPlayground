@@ -24,11 +24,14 @@ function FileMenu({files, loadSketch, text, icon, isMenu}) {
   )
 }
 
-function getFilesList(savedSketches) {
-  return [
-    {name: "examples", files:examples},
-    ...savedSketches
-  ]
+function getFilesList(savedSketches, savedGist) {
+  var list = [];
+  list.push({name: "examples", files:examples});
+  if (savedGist && savedGist.length>0) {
+    list.push({name: "gists", files: savedGist});
+  }
+  list.push(...savedSketches);
+  return list;
 }
 
 const Checkbox = ({value, label, onChange}) => {
@@ -38,8 +41,8 @@ const Checkbox = ({value, label, onChange}) => {
   </div>);
 }
 
-function Toolbar({sketchName, savedSketches, geometry, isInDatabase, camera:{autoRotate}, reducer: {reloadGeometry, updateSketchName, resetSketch, deleteSketch, saveSketch,  loadSketch, resetCamera, toogleCameraRotation}}) {
-  const files = getFilesList(savedSketches);
+function Toolbar({sketchName, savedSketches, savedGist, geometry, isInDatabase, camera:{autoRotate}, connected, reducer: {reloadGeometry, logout, initiateLogin, updateSketchName, resetSketch, deleteSketch, saveSketch,  loadSketch, resetCamera, toogleCameraRotation}}) {
+  const files = getFilesList(savedSketches, savedGist);
   const confDelete = () => (confirm("Are you sure you want to delete sketch "+sketchName+" ?") ? deleteSketch() : null); // eslint-disable-line no-restricted-globals
   return (
     <Menu className="toolbar">
@@ -64,15 +67,15 @@ function Toolbar({sketchName, savedSketches, geometry, isInDatabase, camera:{aut
         </Dropdown>
         <Dropdown item icon="download" text="Export" className='left' >
           <Dropdown.Menu>
-            <Dropdown.Item onClick={() => exportToPly(geometry)}>Export as .ply</Dropdown.Item>
-            <Dropdown.Item onClick={() => exportToObj(geometry)}>Export as .obj</Dropdown.Item>
+            <Dropdown.Item onClick={() => exportToPly(geometry, sketchName)}>Export as .ply</Dropdown.Item>
+            <Dropdown.Item onClick={() => exportToObj(geometry, sketchName)}>Export as .obj</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
 
         <SettingModal   button={<Menu.Item>Setting<Icon name="setting" /></Menu.Item>} />
         <DocModal   button={<Menu.Item>Documentation<Icon name="book" /></Menu.Item>} />
         <AboutModal button={<Menu.Item>About<Icon name="info" /></Menu.Item>} />
-
+         <Menu.Item onClick={connected ? logout : initiateLogin}  >{connected ? "Log out" : "Log in with Github"}<Icon name="github" /></Menu.Item>
       </Menu.Menu>
     </Menu>
   )

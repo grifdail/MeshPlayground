@@ -1832,6 +1832,16 @@
                 "alternateParams": [],
                 "returnValue": null,
                 "hidden": false
+            },
+            {
+                "name": "wqt",
+                "type": "function",
+                "description": null,
+                "tags": [],
+                "params": [],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
             }
         ],
         "statics": [
@@ -2264,6 +2274,18 @@
                     {
                         "name": "v"
                     }
+                ],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "fromArray",
+                "type": "function",
+                "description": null,
+                "tags": [],
+                "params": [
+                    {}
                 ],
                 "alternateParams": [],
                 "returnValue": null,

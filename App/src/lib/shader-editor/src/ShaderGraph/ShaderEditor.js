@@ -38,3 +38,5 @@ export class ShaderEditor extends Component {
   }
 
 }
+
+export {calculateShader};
