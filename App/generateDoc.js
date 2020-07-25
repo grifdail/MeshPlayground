@@ -262,6 +262,8 @@ Promise.all([
   parseFile(path.join(__dirname,"src","MeshTools", "Primitives","VoxelizedVolume.js")),
   parseFile(path.join(__dirname,"src","MeshTools", "Primitives","ConvexVolume.js")),
   parseFile(path.join(__dirname,"src","MeshTools", "Primitives","IcoSphere.js")),
+  parseFile(path.join(__dirname,"src","MeshTools", "Primitives","MarchingCubeVolume.js")),
+  parseFile(path.join(__dirname,"src","MeshTools", "Primitives","ComplexPrismMesh.js")),
   parseFile(path.join(__dirname,"src","MeshTools", "Utils","Utils.js")),
   staticDoc
 ]).then(([
@@ -279,6 +281,8 @@ Promise.all([
   SymetricalTransformedMesh,
   VoxelizedVolume,
   ConvexVolume,
+  MarchingCubeVolume,
+  ComplexPrismMesh,
   Utils,
   staticDoc
 ]) => {
@@ -298,6 +302,8 @@ Promise.all([
     ...SymetricalTransformedMesh,
     ...VoxelizedVolume,
     ...ConvexVolume,
+    ...MarchingCubeVolume,
+    ...ComplexPrismMesh,
     ...Utils,
     ...staticDoc
   ]

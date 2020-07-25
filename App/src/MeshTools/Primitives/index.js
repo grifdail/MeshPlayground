@@ -8,3 +8,5 @@ export {RotationalTransformedMesh} from "./RotationalTransformedMesh.js";
 export {VoxelizedVolume} from "./VoxelizedVolume.js";
 export {ConvexVolume} from "./ConvexVolume.js";
 export {IcoSphere} from "./IcoSphere.js";
+export {MarchingCubeVolume} from "./MarchingCubeVolume.js";
+export {ComplexPrismMesh} from "./ComplexPrismMesh.js"; 

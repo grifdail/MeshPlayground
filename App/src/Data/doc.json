@@ -4695,6 +4695,317 @@
         "hidden": false
     },
     {
+        "name": "lerp",
+        "type": "constant",
+        "description": null,
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "inverseLerp",
+        "type": "constant",
+        "description": null,
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "MarchingCubeVolume",
+        "type": "class",
+        "superClass": "Mesh",
+        "description": "Represent a volume as a Marching Cube based Mesh",
+        "tags": [
+            "mesh",
+            "primitive",
+            "Marching",
+            "volume"
+        ],
+        "methodes": [
+            {
+                "name": "new MarchingCubeVolume",
+                "type": "function",
+                "description": "Create a new Marching Cube Volule",
+                "tags": [
+                    "mesh",
+                    "primitive",
+                    "Marching",
+                    "volume"
+                ],
+                "params": [
+                    {
+                        "name": "size",
+                        "type": "number",
+                        "description": "the resolution of the marching Cube algoryth object... Bigger size means more detail but take more time to compute."
+                    },
+                    {
+                        "name": "fn",
+                        "type": "function",
+                        "description": "define the volume as a Signed distance field function. Take x,y and z parameters in [0,1] and return a negative number if the point is inside the volume;"
+                    },
+                    {
+                        "name": "fn",
+                        "type": "function",
+                        "description": "define the color of the volume. Take x,y and z parameters in [0,1] and return the color at that point;",
+                        "defaultValue": "defaultColor"
+                    }
+                ],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            }
+        ],
+        "statics": [],
+        "properties": [],
+        "hidden": false
+    },
+    {
+        "name": "lerp",
+        "type": "constant",
+        "description": null,
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "cos",
+        "type": "constant",
+        "description": null,
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "sin",
+        "type": "constant",
+        "description": null,
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "TAU",
+        "type": "constant",
+        "description": null,
+        "tags": [],
+        "params": [],
+        "alternateParams": [],
+        "returnValue": null,
+        "hidden": false
+    },
+    {
+        "name": "ComplexPrismMesh",
+        "type": "class",
+        "superClass": "Mesh",
+        "description": "A complex prism primitive",
+        "tags": [
+            "mesh",
+            "primitive"
+        ],
+        "methodes": [
+            {
+                "name": "new ComplexPrismMesh",
+                "type": "function",
+                "description": null,
+                "tags": [
+                    "mesh",
+                    "primitive"
+                ],
+                "params": [
+                    {
+                        "name": "resolution"
+                    },
+                    {
+                        "name": "color"
+                    },
+                    {
+                        "name": "internalRadiusBottom"
+                    },
+                    {
+                        "name": "externalRadiusBottom"
+                    },
+                    {
+                        "name": "internalRadiusTop"
+                    },
+                    {
+                        "name": "externalRadiusTop"
+                    },
+                    {
+                        "name": "centerOffsetBottom"
+                    },
+                    {
+                        "name": "centerOffsetTop"
+                    },
+                    {
+                        "name": "addInside",
+                        "defaultValue": "true"
+                    },
+                    {
+                        "name": "addOutside",
+                        "defaultValue": "true"
+                    },
+                    {
+                        "name": "addTop",
+                        "defaultValue": "true"
+                    },
+                    {
+                        "name": "addBottom",
+                        "defaultValue": "true"
+                    },
+                    {
+                        "name": "addExtremes",
+                        "defaultValue": "true"
+                    },
+                    {
+                        "name": "useFullFace",
+                        "defaultValue": "true"
+                    },
+                    {
+                        "name": "startAngle",
+                        "defaultValue": "0"
+                    },
+                    {
+                        "name": "endAngle",
+                        "defaultValue": "TAU"
+                    }
+                ],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "getPoints",
+                "type": "function",
+                "description": null,
+                "tags": [
+                    "mesh",
+                    "primitive"
+                ],
+                "params": [
+                    {
+                        "name": "t"
+                    },
+                    {
+                        "name": "internalRadiusBottom"
+                    },
+                    {
+                        "name": "externalRadiusBottom"
+                    },
+                    {
+                        "name": "internalRadiusTop"
+                    },
+                    {
+                        "name": "externalRadiusTop"
+                    },
+                    {
+                        "name": "centerOffsetBottom"
+                    },
+                    {
+                        "name": "centerOffsetTop"
+                    },
+                    {
+                        "name": "startAngle",
+                        "defaultValue": "0"
+                    },
+                    {
+                        "name": "endAngle",
+                        "defaultValue": "TAU"
+                    }
+                ],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            }
+        ],
+        "statics": [
+            {
+                "name": "disk",
+                "type": "function",
+                "description": null,
+                "tags": [
+                    "mesh",
+                    "primitive"
+                ],
+                "params": [
+                    {
+                        "name": "resolution"
+                    },
+                    {
+                        "name": "color"
+                    },
+                    {
+                        "name": "radius"
+                    },
+                    {
+                        "name": "doubleSided",
+                        "defaultValue": "false"
+                    },
+                    {
+                        "name": "startAngle",
+                        "defaultValue": "0"
+                    },
+                    {
+                        "name": "endAngle",
+                        "defaultValue": "TAU"
+                    }
+                ],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            },
+            {
+                "name": "diskWithHole",
+                "type": "function",
+                "description": null,
+                "tags": [
+                    "mesh",
+                    "primitive"
+                ],
+                "params": [
+                    {
+                        "name": "resolution"
+                    },
+                    {
+                        "name": "color"
+                    },
+                    {
+                        "name": "radius"
+                    },
+                    {
+                        "name": "holeRadius"
+                    },
+                    {
+                        "name": "doubleSided",
+                        "defaultValue": "false"
+                    },
+                    {
+                        "name": "startAngle",
+                        "defaultValue": "0"
+                    },
+                    {
+                        "name": "endAngle",
+                        "defaultValue": "TAU"
+                    }
+                ],
+                "alternateParams": [],
+                "returnValue": null,
+                "hidden": false
+            }
+        ],
+        "properties": [],
+        "hidden": false
+    },
+    {
         "name": "randomPalette",
         "type": "function",
         "description": "export function sphereVolume(radius, center) {return (x,y,z) => (x-center.x)*(x-center.x)+(y-center.y)*(y-center.y)+(z-center.z)*(z-center.z)<radius*radius; }",
