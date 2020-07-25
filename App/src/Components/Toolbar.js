@@ -5,34 +5,9 @@ import examples from "../Data/examples.json";
 import AboutModal from "./AboutModal";
 import DocModal from "./DocModal";
 import SettingModal from "./SettingModal";
+import OpenModal from "./OpenModal";
 
-function FileMenu({files, loadSketch, text, icon, isMenu}) {
-  return (
-    <Dropdown item text={text} icon={icon || false} className='left'>
-      <Dropdown.Menu>
-        {
-          files.map((file, index) => {
-            if (file.files) {
-              return <FileMenu files={file.files} loadSketch={loadSketch} key={index} text={file.name} icon="dropdown"/>;
-            } else {
-              return <Dropdown.Item key={index} onClick={() => loadSketch(file, true)}>{file.name}</Dropdown.Item>
-            }
-          })
-        }
-      </Dropdown.Menu>
-    </Dropdown>
-  )
-}
 
-function getFilesList(savedSketches, savedGist) {
-  var list = [];
-  list.push({name: "examples", files:examples});
-  if (savedGist && savedGist.length>0) {
-    list.push({name: "gists", files: savedGist});
-  }
-  list.push(...savedSketches);
-  return list;
-}
 
 const Checkbox = ({value, label, onChange}) => {
   return (<div className="ui toggle checkbox">
@@ -42,7 +17,6 @@ const Checkbox = ({value, label, onChange}) => {
 }
 
 function Toolbar({sketchName, savedSketches, savedGist, geometry, isInDatabase, camera:{autoRotate}, connected, reducer: {reloadGeometry, logout, initiateLogin, updateSketchName, resetSketch, deleteSketch, saveSketch,  loadSketch, resetCamera, toogleCameraRotation}}) {
-  const files = getFilesList(savedSketches, savedGist);
   const confDelete = () => (confirm("Are you sure you want to delete sketch "+sketchName+" ?") ? deleteSketch() : null); // eslint-disable-line no-restricted-globals
   return (
     <Menu className="toolbar">
@@ -54,7 +28,7 @@ function Toolbar({sketchName, savedSketches, savedGist, geometry, isInDatabase, 
       {isInDatabase ?<Menu.Item onClick={confDelete} >Delete<Icon name="trash" /></Menu.Item> : null}
 
       <Menu.Item onClick={resetSketch} >New Sketch<Icon name="file outline" /></Menu.Item>
-      <FileMenu files={files} loadSketch={loadSketch} icon='folder open outline' text="open" isMenu/>
+      <OpenModal button={(onClick)=> <Menu.Item onClick={onClick}>Open<Icon name="folder open outline" /></Menu.Item>} files={({savedSketches, savedGist})} loadSketch={loadSketch}  isMenu/>
       <Menu.Menu position='right'>
         <Menu.Item onClick={reloadGeometry} >Reload<Icon name="refresh" /></Menu.Item>
         <Dropdown item  text="camera" icon="camera" className='left'>
