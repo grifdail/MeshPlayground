@@ -49,7 +49,7 @@ const getCodeForNode = curry((models, node) => {
     return old;
   }, {});
   return {
-    main:  model.toGLSL(inputs, params, outputs, node.inputsTypes),
+    main:  model.toGLSL(inputs, params, outputs, node.inputsTypes, (a) => toPinName(node.name, a)),
     uniforms:  model.requireUniform(inputs, params, outputs, node.inputsTypes)
   };
 })

@@ -97,6 +97,9 @@ export class Color {
   }
 }
 
+/*
+  @hidden
+*/
 function parseColor(...params) {
   if (params.length === 1) {
     const param = params[0];
@@ -121,10 +124,15 @@ function parseColor(...params) {
     return params;
   }
 }
-
+/*
+  @hidden
+*/
 function parseCSS(str) {
   return cssNamed(str) || cssHex3 || cssHex6 || cssRgb || cssRgba || cssHsl || cssHsla;
 }
+/*
+  @hidden
+*/
 function parseIntColor(a) {
   return [
     ((a>>16) & 0xff)/255,
@@ -133,7 +141,9 @@ function parseIntColor(a) {
     1-((a>>24) & 0xff)/255
   ]
 }
-
+/*
+  @hidden
+*/
 function cssNamed(str) {
   var c = cssColor[str.toLowerCase()];
   if(!c) return;
@@ -144,7 +154,9 @@ function cssNamed(str) {
     1
   ];
 }
-
+/*
+  @hidden
+*/
 function cssRgb(str) {
   if (0 === str.indexOf('rgb(')) {
     str = str.match(/rgb\(([^)]+)\)/)[1];
@@ -157,7 +169,9 @@ function cssRgb(str) {
     ];
   }
 }
-
+/*
+  @hidden
+*/
 function cssRgba(str) {
   if(str.indexOf('rgba(') === 0) {
     str = str.match(/rgba\(([^)]+)\)/)[1];
@@ -171,7 +185,9 @@ function cssRgba(str) {
     ];
   }
 }
-
+/*
+  @hidden
+*/
 function cssHex6(str) {
   if('#' === str[0] && 7 === str.length) {
     return [
@@ -182,7 +198,9 @@ function cssHex6(str) {
     ];
   }
 }
-
+/*
+  @hidden
+*/
 function cssHex3(str) {
   if('#' === str[0] && 4 === str.length) {
     return [
@@ -194,6 +212,9 @@ function cssHex3(str) {
   }
 }
 
+/*
+  @hidden
+*/
 function cssHsl(str) {
   if(str.indexOf('hsl(') === 0) {
     str = str.match(/hsl\(([^)]+)\)/)[1];
@@ -210,6 +231,9 @@ function cssHsl(str) {
   }
 }
 
+/*
+  @hidden
+*/
 function cssHsla(str) {
   if(str.indexOf('hsla(') === 0) {
     str = str.match(/hsla\(([^)]+)\)/)[1];
@@ -227,6 +251,9 @@ function cssHsla(str) {
   }
 }
 
+/*
+  @hidden
+*/
 function hslToRgb(h, s, l){
     var r, g, b;
 
@@ -251,6 +278,9 @@ function hslToRgb(h, s, l){
     return [r, g, b];
 }
 
+/*
+  @hidden
+*/
 function rgbToHsl(r, g, b){
     var max = Math.max(r, g, b), min = Math.min(r, g, b);
     var h, s, l = (max + min) / 2;

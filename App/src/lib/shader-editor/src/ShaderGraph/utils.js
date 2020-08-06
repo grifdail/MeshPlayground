@@ -141,3 +141,5 @@ export class NumberInput extends Component {
     return <input  {...this.props} value={this.state.text} onChange={this.onChange} onBlur={this.onBlur} />
   }
 }
+
+

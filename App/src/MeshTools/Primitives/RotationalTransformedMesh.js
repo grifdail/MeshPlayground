@@ -1,7 +1,8 @@
 import {Mesh} from "../Mesh.js";
 
 /** Create a mesh where each added face is duplicated 'count' time around 'axis'
-@tag mesh
+@tag primitive
+  @tag mesh
 @tag modifier
 */
 export class RotationalTransformedMesh extends Mesh {

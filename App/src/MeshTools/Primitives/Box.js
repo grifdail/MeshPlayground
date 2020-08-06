@@ -12,8 +12,8 @@ import {Vector3} from "../Utils/Vector3.js"
   @property {Vector3} RBB position of the Right Bottom Back vertex;
   @property {Vector3} LBF position of the Left Bottom Front vertex;
   @property {Vector3} RBF position of the Right Bottom Front vertex;
-  @tag mesh
   @tag primitive
+  @tag mesh
 */
 export class Box extends Mesh {
   /**

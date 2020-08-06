@@ -17,3 +17,22 @@ const iconMapping = {
 export const getIconForType = type => {
   return iconMapping[type]
 }
+
+export const getIconForItem = item => {
+  if (item.icon) {
+    return item.icon;
+  }
+  if (item.iconType) {
+     return iconMapping[item.iconType];
+  }
+  if (item.returnValue) {
+     return iconMapping[item.returnValue.type];
+  }
+  if (item.tags.includes("const")) {
+     return "pin";
+  }
+  if (iconMapping[item.type]) {
+     return iconMapping[item.type];
+  }
+  return "square"
+}

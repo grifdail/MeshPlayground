@@ -4,6 +4,7 @@ import {ParamError} from "../Error.js";
 
 /**
  * Represent a 3D rotation as a Quaternion.
+ * @tag Math
  * @tag quaternion
 */
 export class Quaternion extends THREE.Quaternion {
@@ -55,5 +56,22 @@ export class Quaternion extends THREE.Quaternion {
     return v.clone().applyQuaternion(this);
   }
 }
-Object.defineProperty(THREE.Quaternion.prototype, "isQuaternion", {configurable: false, enumerable: true, value: true, writable: false});
+Object.defineProperty(THREE.Quaternion.prototype, "isQuaternion", {
+      /**
+    @hidden
+  */ 
+  configurable: false, 
+      /**
+    @hidden
+  */ 
+  enumerable: true, 
+      /**
+    @hidden
+  */ 
+  value: true, 
+      /**
+    @hidden
+  */ 
+  writable: false
+});
 //THREE.Quaternion.prototype.isQuaternion = true;

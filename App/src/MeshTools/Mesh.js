@@ -67,6 +67,20 @@ export class Mesh {
   }
 
   /**
+    Add a two triangle to the mesh so that they appear as two faces
+    @param {vector} v1
+    @param {vector} v2
+    @param {vector} v3
+    @param {vector} uv1 the uv coordinate of the first vertice
+    @param {vector} uv2 the uv coordinate of the second vertice
+    @param {vector} uv3 the uv coordinate of the last vertice
+  */
+  addDoubleSidedFace(v1, v2, v3, uv1 = uv(0,0), uv2 = uv(1,0), uv3 = uv(1,1), c) {
+    this.addFace(v1, v2, v3, uv1, uv2, uv3, c);
+    this.addFace(v1, v3, v2, uv1, uv3, uv2, c);
+  }
+
+  /**
     Add two triangle to the mesh such that they form a quadrilater
     the vertice need to be specified in a clockwise orded for the quad to face the right way
     @param {vector} v1
@@ -81,6 +95,23 @@ export class Mesh {
   addQuad(a,b,c,d, uv1 = uv(0,0), uv2 = uv(1,0), uv3 = uv(1,1), uv4 = uv(0,1)) {
     this.addFace(a,b,c, uv1, uv2, uv3);
     this.addFace(a,c,d, uv1, uv3, uv4);
+  }
+  /**
+    Add four triangle to the mesh such that they form a double sided quadrilater
+    @param {vector} v1
+    @param {vector} v2
+    @param {vector} v3
+    @param {vector} v4
+    @param {vector} uv1 the uv coordinate of the first vertice
+    @param {vector} uv2 the uv coordinate of the second vertice
+    @param {vector} uv3 the uv coordinate of the third vertice
+    @param {vector} uv4 the uv coordinate of the last vertice
+  */
+  addDoubleSidedQuad(a,b,c,d, uv1 = uv(0,0), uv2 = uv(1,0), uv3 = uv(1,1), uv4 = uv(0,1)) {
+    this.addFace(a,b,c, uv1, uv2, uv3);
+    this.addFace(a,c,d, uv1, uv3, uv4);
+    this.addFace(a,c,b, uv1, uv3, uv2);
+    this.addFace(a,d,c, uv1, uv4, uv3);
   }
   /**
     Add another mesh faces to this mesh.
@@ -235,10 +266,9 @@ export class Mesh {
       this.resetMatrix();
     }
   }
-  /**
-    Generate the actual geometry;
+/**
     @hidden
-  */
+  */ 
   _generateMesh() {
     this._generateMeshFlat();
   }

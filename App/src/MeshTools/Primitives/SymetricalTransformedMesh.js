@@ -1,7 +1,8 @@
 import {Mesh} from "../Mesh.js";
 
 /** Create a mesh where each added face is duplicated symetricaly according to axis;
-@tag mesh
+@tag primitive
+  @tag mesh
 @tag modifier
 */
 export class SymetricalTransformedMesh extends Mesh {

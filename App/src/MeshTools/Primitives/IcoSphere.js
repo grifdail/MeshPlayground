@@ -4,9 +4,10 @@ import * as THREE from "three";
 import {Vector3} from "../Utils/Vector3.js";
 
 
-/** A basic sphere
+/** 
+A basic sphere
+@tag primitive
   @tag mesh
-  @tag primitive
 */
 export class IcoSphere extends Mesh {
   constructor(radius = 10, subdivisions = 0, color = 0xffffff) {
@@ -25,6 +26,9 @@ export class IcoSphere extends Mesh {
   }
 }
 
+/**
+    @hidden
+  */ 
 function cartesianToPolar( coord ) {
 
   var lon = Math.atan2( coord.x, -coord.z ) * 180/Math.PI
@@ -34,7 +38,9 @@ function cartesianToPolar( coord ) {
   return [ lon, lat ]
 
 }
-
+/**
+    @hidden
+  */ 
 function getUv( coord ) {
 
   var [ lon, lat ] = cartesianToPolar(coord);
@@ -42,7 +48,9 @@ function getUv( coord ) {
   return new Vector3(lon/360, 0.5+lat/180,0)
 
 }
-
+/**
+    @hidden
+  */ 
 function icosphere(subdivisions) {
   subdivisions = +subdivisions|0
 
@@ -106,8 +114,10 @@ function icosphere(subdivisions) {
   return complex
 }
 
-// TODO: work out the second half of loop subdivision
-// and extract this into its own module.
+
+/**
+  @hidden
+*/
 function subdivide(complex) {
   var positions = complex.positions
   var cells = complex.cells
@@ -203,7 +213,9 @@ function subdivide(complex) {
   }
 }
 
-
+/**
+    @hidden
+  */ 
 function normalize(vec) {
   var mag = 0
   for (var n = 0; n < vec.length; n++) {

@@ -6,9 +6,10 @@ import {Error} from "../Error.js";
 
 //export function sphereVolume(radius, center) {return (x,y,z) => (x-center.x)*(x-center.x)+(y-center.y)*(y-center.y)+(z-center.z)*(z-center.z)<radius*radius; }
 
-/** Return one of the Palette of ColorPalettes;
-@tag color
-@tag random
+/** 
+  Return one of the Palette of ColorPalettes;
+  @tag color
+  @tag random
 */
 export function randomPalette() {
   const paletteKeys = Object.keys(ColorPalettes);
@@ -18,7 +19,8 @@ export function randomPalette() {
   return palette;
 }
 
-/** Create a subdivided quad
+/** 
+  Create a subdivided quad
   @param {mesh} mesh the mesh to which the item will be added
   @param {vector} tl the first corner position
   @param {vector} tr the second corner position
@@ -50,8 +52,8 @@ export function subdividedQuad(mesh, tl, tr, bl, bt, subDiv) {
   return a promise that resolve with the image object loaded from url
   This is asynchrone so your sketch need to return a promise to be able to use this image data
   @param {string} url the url to the image. The URL need to allow cross domain request
-  @tag async
   @tag image
+  @tag async
 */
 export function loadImage(url) {
   const errorToThrow = Error(`image at "${url}" could not be loaded.`,1)
@@ -82,8 +84,8 @@ export function createCanvas(width, height) {
   return a promise that resolve with a sampler function that take u and v parameter (in [0, 1]) and return the color of the pixel a that point
   This is asynchrone so your sketch need to return a promise to be able to use this image data
   @param targer can be an Image, a Canvas or the url URL to an image
-  @tag async
   @tag image
+  @tag async
 */
 export function loadSampler(target) {
   var p = null;

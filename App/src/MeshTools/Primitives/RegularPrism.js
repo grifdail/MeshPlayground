@@ -4,8 +4,8 @@ import * as THREE from "three";
 import {Vector3} from "../Utils/Vector3.js";
 
 /** A prism primitive
+@tag primitive
   @tag mesh
-  @tag primitive
 */
 export class RegularPrism extends Mesh {
   constructor(side = 25, size = 10, height = 10, color=0xffffff) {

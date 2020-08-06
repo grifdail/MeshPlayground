@@ -7,8 +7,8 @@ import {Error, ParamError} from "../Error.js";
 const defaultColor = () => new Color(1,1,1);
 /**
 Represent a volume as a Voxel Mesh
-@tag mesh
 @tag primitive
+  @tag mesh
 @tag voxel
 @tag volume
 */

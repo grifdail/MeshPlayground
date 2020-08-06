@@ -17,6 +17,7 @@ export const getVectorParams = (name, ...params) => {
 
 /**
  * Class representing a point.
+ * @tag Math
  * @tag vector
 */
 export class Vector3 extends THREE.Vector3 {
@@ -328,4 +329,21 @@ export class Vector3 extends THREE.Vector3 {
   }
 }
 
-Object.defineProperty(Vector3.prototype, "isVector", {configurable: false, enumerable: true, value: true, writable: false});
+Object.defineProperty(Vector3.prototype, "isVector", {
+      /**
+    @hidden
+  */ 
+  configurable: false, 
+      /**
+    @hidden
+  */ 
+  enumerable: true, 
+      /**
+    @hidden
+  */ 
+  value: true, 
+      /**
+    @hidden
+  */ 
+  writable: false
+});

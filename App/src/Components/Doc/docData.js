@@ -9,6 +9,7 @@ var colorPaletteDoc = [
   {
     name: "ColorPalettes",
     type: "object",
+    iconType: "color-palette",
     description: "A collection of color palette",
     tags: ["color"],
     hidden: false,
@@ -23,6 +24,7 @@ var colorPaletteDoc = [
   {
     name: "Pico8Colors",
     type: "object",
+    iconType: "color-palette",
     description: "A collection of colors",
     tags: ["color"],
     hidden: false,
@@ -43,6 +45,7 @@ var colorPaletteDoc = [
   {
     name: "Endesga64",
     type: "object",
+    iconType: "color-palette",
     description: "A collection of colors",
     tags: ["color"],
     hidden: false,

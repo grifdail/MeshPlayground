@@ -7,13 +7,15 @@ export const Lambert = {
     {name:"color", type:"vector3"},
   ],
   outputs: [
-    {name:"value", type:"vector3"}
+    {name:"color", type:"vector3"},
+    {name:"value", type:"number"}
   ],
-  toGLSL(inputs, params, outputs) {
+  toGLSL(inputs, params, outputs, types, variables) {
     var light = inputs.light || "vec3(0.3,1,1)";
     var normal = inputs.normal || "vNormal";
     var color = inputs.color || "vColor";
-    return `vec3 ${outputs.value} = ${color} * max(dot(normalize(${light}), normalize(${normal})), 0.0);;`;
+    return `float ${outputs.value} = max(dot(normalize(${light}), normalize(${normal})), 0.0);
+    vec3 ${outputs.color} = ${color} * ${outputs.value} ;`;
   }
 }
 

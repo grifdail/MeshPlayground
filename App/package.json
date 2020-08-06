@@ -15,6 +15,7 @@
     "gists": "^2.0.0",
     "mousetrap": "*",
     "noisejs": "*",
+    "postprocessing": "^6.16.0",
     "ramda": "^0.26.1",
     "raw-loader": "^3.0.0",
     "react": "*",
@@ -22,11 +23,11 @@
     "react-contextmenu": "*",
     "react-dom": "*",
     "react-infinite-scroller": "*",
-    "react-scripts": "^3.0.1",
+    "react-scripts": "^3.3.1",
     "semantic-ui-css": "*",
     "semantic-ui-react": "^0.87.1",
     "stacktracey": "*",
-    "three": "^0.105.2",
+    "three": "^0.119.1",
     "three-orbitcontrols": "^2.102.1"
   },
   "scripts": {

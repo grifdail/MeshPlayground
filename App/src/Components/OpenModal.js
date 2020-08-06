@@ -64,7 +64,7 @@ function DocModal({files, button, loadSketch}) {
       <Modal
         className="documentation"
         trigger={button(onOpen)}
-        size="fullscreen"
+        size="large"
         header="Open"
         open={open}
         onClose={onClose}

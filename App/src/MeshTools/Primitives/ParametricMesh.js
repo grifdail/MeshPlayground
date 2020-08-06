@@ -3,8 +3,8 @@ import {Mesh} from "../Mesh.js";
 
 /**
   Represent a plane transformed according to a parametric function
+@tag primitive
   @tag mesh
-  @tag primitive
 */
 export class ParametricMesh extends Mesh {
   /**

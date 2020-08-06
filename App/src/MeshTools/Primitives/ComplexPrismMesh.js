@@ -3,11 +3,27 @@ import * as THREE from "three";
  import {MathExtensions} from "../MathExtensions.js";
 
 import {Vector3} from "../Utils/Vector3.js";
-const {lerp, cos, sin, TAU} = MathExtensions;
+const {
+/**
+    @hidden
+  */ 
+    lerp, 
+    /**
+    @hidden
+  */ 
+  cos, 
+  /**
+    @hidden
+  */ 
+  sin, 
+/**
+    @hidden
+  */ 
+  TAU} = MathExtensions;
 
 /** A complex prism primitive
-  @tag mesh
   @tag primitive
+  @tag mesh
 */
 
 export class ComplexPrismMesh extends Mesh {

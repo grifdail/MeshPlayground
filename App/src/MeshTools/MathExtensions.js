@@ -27,6 +27,9 @@ export const ExtentionMethodes = {
   },
   //Calculates the linear parameter t that produces the interpolant value within the range [a, b].
   inverseLerp (value, a, b) {
+    if (a == b) {
+      return value;
+    }
     return (value-a)/(b-a);
   },
   //Transform value from the range `a to b` to the range `c to d`
@@ -100,19 +103,40 @@ export const ExtentionMethodes = {
   //Used for documentation purpose
   //Returns the absolute value of a number.
   abs(x) {},
-  //Returns the arccosine of a number.
+  /**
+    Returns the arccosine of a number.
+    @tag trigonometry
+  */
   acos(a) {},
-  //Returns the hyperbolic arccosine of a number
+  /**
+    Returns the hyperbolic arccosine of a number
+    @tag trigonometry
+  */
   acosh(a) {},
-  //Returns the arcsine of a number
+  /**
+    Returns the arcsine of a number
+    @tag trigonometry
+  */
   asin(a) {},
-  //Returns the hyperbolic arcsine of a number
+  /**
+    Returns the hyperbolic arcsine of a number
+    @tag trigonometry
+  */
   asinh(a) {},
-  //Returns the arctangent of a number.
+  /**
+    Returns the arctangent of a number.
+    @tag trigonometry
+  */
   atan(a) {},
-  //Returns the hyperbolic arctangent of a number.
+  /**
+    Returns the hyperbolic arctangent of a number.
+    @tag trigonometry
+  */
   atanh(a) {},
-  //Returns the arctangent of the quotient of its arguments.
+  /**
+    Returns the arctangent of the quotient of its arguments.
+    @tag trigonometry
+  */
   atan2(y,x) {},
   //Returns the smallest integer greater than or equal to a number.
   ceil(a) {},
@@ -122,9 +146,15 @@ export const ExtentionMethodes = {
   expm1(x) {},
   //Returns the number of leading zeroes of a 32-bit integer.
   clz32(x) {},
-  //Returns the cosine of a number.
+  /**
+    Returns the cosine of a number.
+    @tag trigonometry
+  */
   cos(a) {},
-  //Returns the hyperbolic cosine of a number.
+  /**
+    Returns the hyperbolic cosine of a number.
+    @tag trigonometry
+  */
   cosh(a) {},
   //Returns E^x, where x is the argument, and E is Euler's constant (2.718…), the base of the natural logarithm
   exp(x) {},
@@ -150,19 +180,31 @@ export const ExtentionMethodes = {
   pow(a,b) {},
   //Returns the value of a number rounded to the nearest integer.
   round(x) {},
-  //Returns the sign of the x, indicating whether x is positive, negative or zero.
+  // Returns the sign of the x, indicating whether x is positive, negative or zero.
   sign(x) {},
-  // Returns the sine of a number.
+  /**
+     Returns the sine of a number.
+    @tag trigonometry
+  */
   sin(x) {},
-  //Returns the hyperbolic sine of a number.
+  /**
+     Returns the hyperbolic sine of a number.
+    @tag trigonometry
+  */
   sinh(x) {},
   // Returns the positive square root of a number.
   sqrt(x) {},
-  //Returns the tangent of a number.
+  /**
+     Returns the tangent of a number.
+    @tag trigonometry
+  */
   tan(x) {},
-  //Returns the hyperbolic tangent of a number.
+  /**
+     Returns the hyperbolic tangent of a number.
+    @tag trigonometry
+  */
   tanh(x) {},
-  //Returns the integral part of the number x, removing any fractional digits.
+  // Returns the integral part of the number x, removing any fractional digits.
   trunc(x) {},
   //Euler's constant and the base of natural logarithms, approximately 2.718.
   E:0,
@@ -212,6 +254,13 @@ export const RandomExtensionMethodes = {
     }
     return MathExtensions.random()*(max-min)+min;
   },
+  //Return one of the paramers;
+  randomOutOf(...params) {
+    if (params.length == 0) {
+      return null;
+    }
+    return params[MathExtensions.randomInt(0, params.length)];
+  },
   //Return a random point on a sphere surface;
   randomPointOnSphere() {
     const alpha = MathExtensions.random()*Math.PI*2;
@@ -240,23 +289,66 @@ export const RandomExtensionMethodes = {
     const pos = new Vector3(MathExtensions.cos(alpha), MathExtensions.sin(alpha), 0).scale(radius);
     return pos;
   },
-
+  // Shuffle an array
+  shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  },
+  /**
+    @tag noise
+  */
   simplex2(x,y) {},
+  /**
+    @tag noise
+  */
   simplex3(x, y, z) {},
+  /**
+    @tag noise
+  */
   perlin2(x, y) {},
+  /**
+    @tag noise
+  */
   perlin3(x, y, z) {},
+  /**
+    @tag noise
+  */
   noiseSeed(val) {}
 }
 var noiseGenerator = new Noise(Math.random());
 
+  /**
+    @hidden
+  */  
 var noiseFunctions = {
+  /**
+    @hidden
+  */ 
   simplex2: (x,y) => noiseGenerator.simplex2(x,y),
+    /**
+    @hidden
+  */  
   simplex3: (x, y, z) => noiseGenerator.simplex3(x, y, z),
+    /**
+    @hidden
+  */  
   perlin2: (x, y) => noiseGenerator.perlin2(x, y),
+    /**
+    @hidden
+  */  
   perlin3: (x, y, z) => noiseGenerator.perlin3(x, y, z),
+    /**
+    @hidden
+  */  
   noiseSeed: (val) => noiseGenerator.seed(val)
 };
 
+
+  /**
+    @hidden
+  */
 const randomSeededFunction = (()=> {
   var _seed = Math.random()*2147483647;
   return {

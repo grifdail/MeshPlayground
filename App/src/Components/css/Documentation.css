@@ -24,3 +24,7 @@ span.color-preview {
 .open-item {
   cursor: pointer;
 }
+
+.ui.five.column.grid {
+  margin-bottom: 1rem;
+}

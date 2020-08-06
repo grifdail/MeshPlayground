@@ -8,8 +8,8 @@ import {subdividedQuad} from "../Utils/Utils.js";
 const defaultColor = () => new Color(1,1,1);
 /**
 Represent a volume as a Mesh
-@tag mesh
 @tag primitive
+  @tag mesh
 @tag volume
 */
 export class ConvexVolume extends Mesh {

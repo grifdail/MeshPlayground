@@ -16,7 +16,8 @@ addFaces(box);`,
     savedSketches: [],
     camera: {
       autoRotate: true,
-      reset: false
+      reset: false,
+      ssao: true,
     },
   }
 }

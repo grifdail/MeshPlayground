@@ -5,7 +5,15 @@
   import {Error, ParamError} from "../Error.js";
 
 
-  const {lerp, inverseLerp} = MathExtensions;
+  const {
+/**
+    @hidden
+*/
+      lerp, 
+/**
+    @hidden
+*/
+      inverseLerp} = MathExtensions;
   const defaultColor = () => new Color(1,1,1);
 
 
@@ -273,8 +281,8 @@
 
   /**
   Represent a volume as a Marching Cube based Mesh
+@tag primitive
   @tag mesh
-  @tag primitive
   @tag Marching Cube
   @tag volume
   */

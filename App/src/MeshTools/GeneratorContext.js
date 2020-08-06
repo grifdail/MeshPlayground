@@ -12,6 +12,9 @@ import {Debug} from "./Debug.js";
 import {ParamError} from "./Error.js";
 
 export class GeneratorContext extends Mesh {
+  /**
+    @hidden
+  */ 
   constructor() {
     super();
     this._texture = null;
@@ -46,6 +49,9 @@ export class GeneratorContext extends Mesh {
     }
   }
 
+/**
+    @hidden
+  */ 
   _generateMesh() {
     if (this._isFlat) {
       return this._generateMeshFlat();

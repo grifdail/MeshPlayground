@@ -110,7 +110,7 @@ const parseFunction = (node,comment, className, tags) => {
     const jsdoc = parseComment(comment);
     if (jsdoc) {
       obj.description = jsdoc.description;
-      obj.tags.push(...getTagsFromDoc(jsdoc));
+      obj.tags=[...getTagsFromDoc(jsdoc), ...obj.tags];
       obj.returnValue = getItemsFromDoc(jsdoc, "return")[0] || null;
       obj.params = getItemsFromDoc(jsdoc, "param");
       obj.alternateParams = getItemsFromDoc(jsdoc, "alternate");
@@ -170,6 +170,10 @@ const parseNode = ast => {
     }
     if (node.type === "MethodDefinition") {
       let fnDefinition =parseFunction(node, comment, currentClass.name, parentTags);
+      if (fnDefinition.hidden) {
+        this.skip();
+        return
+      }
       if (node.static) {
         currentClass.statics.push(fnDefinition);
       } else {
@@ -192,6 +196,7 @@ const parseNode = ast => {
     }
     if (node.type === "Property") {
       let fnDefinition = parseGenericNode(node, "constant", comment, parentTags);
+      fnDefinition.tags = ["const", ...fnDefinition.tags]
       doc.push(fnDefinition);
       this.skip();
       return;
@@ -217,7 +222,7 @@ const parseNode = ast => {
 
 
   walk(ast,{ enter, leave});
-  return doc;
+  return doc.filter(item => !item.hidden);
 }
 const parseFile = url => fs.readFile(url)
   .then(parse)
