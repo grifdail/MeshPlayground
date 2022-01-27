@@ -27,7 +27,7 @@
     "semantic-ui-css": "*",
     "semantic-ui-react": "^0.87.1",
     "stacktracey": "*",
-    "three": "^0.119.1",
+    "three": "^0.137.0",
     "three-orbitcontrols": "^2.102.1"
   },
   "scripts": {
